@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>House Of Rekha</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Roboto&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- Header/Navbar -->
+  <header>
+    <nav class="navbar">
+      <div class="logo">
+  <img src="assets/2.png" alt="HOR Logo">
+  
+</div>
+<h1>HOUSE OF REKHA</h1>
+
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#explore">Explore Designs</a></li>
+        <li><a href="#services">Tailoring</a></li>
+        <li><a href="#designer">Fashion Design</a></li>
+        <li><a href="#book">Book Now</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+  <div style="padding:24px;">
+    <video src="assets/main1.mp4" autoplay loop muted
+           
+           style="display:block; width:100%; height:auto; margin:0; border-radius:16px; object-fit:cover;">
+      Your browser does not support the video tag.
+    </video>
+  </div>
+
+  <!-- Row of 4 photos -->
+  <div style="display: flex; gap: 24px; padding: 24px 24px 0 24px; justify-content: center;">
+    <img src="assets/explore 1.jpg" alt="Photo 1" style="width:100%; max-width:300px; aspect-ratio:3/4; object-fit:cover; border-radius:12px;">
+    <img src="assets/explore 2.jpg" alt="Photo 2" style="width:100%; max-width:300px; aspect-ratio:3/4; object-fit:cover; border-radius:12px;">
+    <img src="assets/explore 3.jpg" alt="Photo 3" style="width:100%; max-width:300px; aspect-ratio:3/4; object-fit:cover; border-radius:12px;">
+    <img src="assets/explore 4.jpg" alt="Photo 4" style="width:100%; max-width:300px; aspect-ratio:3/4; object-fit:cover; border-radius:12px;">
+  </div>
+
+<!-- Landing Section -->
+<section id="home" class="hero">
+  <p>Elegant tailoring & modern fashion design, stitched with love.</p>
+  <a href="explore.html">
+  <button>Explore Designs</button>
+</a>
+</section>
+
+
+  <!-- Explore Designs -->
+  <section id="explore">
+    <h2>Explore Designs</h2>
+    <div class="design-gallery">
+      <div class="design-card">
+        <h3>Kurti - Embroidered</h3>
+        <p>Elegant cotton kurti with floral embroidery</p>
+        <p class="price">$400</p>
+      </div>
+      <!-- Add more design-card blocks as needed -->
+    </div>
+  </section>
+
+  <!-- Tailoring Services -->
+  <section id="services">
+    <h2>Tailoring Services</h2>
+    <p>Choose garment, enter measurements & book stitching</p>
+    <form class="tailoring-form">
+      <label>Clothing Type:</label>
+      <select>
+        <option>Kurti</option>
+        <option>Gown</option>
+        <option>Blazer</option>
+        <option>Sherwani</option>
+      </select>
+
+      <label>Measurements:</label>
+      <input type="text" placeholder="Bust / Chest (in inches)">
+      <input type="text" placeholder="Waist">
+      <input type="text" placeholder="Hips">
+
+      <button type="submit">Submit</button>
+    </form>
+  </section>
+
+  <!-- Fashion Design Section -->
+  <section id="designer">
+    <h2>Fashion Designing</h2>
+    <p>Consult with our fashion designer for unique creations</p>
+    <div class="portfolio">
+      <img src="custom1.jpg" alt="Custom Design">
+      <img src="custom2.jpg" alt="Custom Design">
+    </div>
+  </section>
+
+  <!-- Booking Section -->
+  <section id="book">
+    <h2>Book Your Appointment</h2>
+    <form class="booking-form">
+      <input type="text" placeholder="Name">
+      <input type="email" placeholder="Email">
+      <input type="date">
+      <textarea placeholder="Special instructions..."></textarea>
+      <button type="submit">Book Now</button>
+    </form>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact">
+    <h2>Contact Us</h2>
+    <p>Email: rekha.couture@gmail.com | Instagram: @rekhacouture</p>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 Rekha Couture. All rights reserved.</p>
+  </footer>
+
+</body>
+</html>
