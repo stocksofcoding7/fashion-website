@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Product Detail</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin:20px; }
+    .container { display:flex; gap:30px; }
+    img { max-width:400px; border-radius:10px; }
+    .info { max-width:500px; }
+    .price { color:green; font-size:20px; margin:10px 0; }
+    select, input, textarea, button {
+      margin:10px 0; padding:8px; width:100%;
+      border:1px solid #ccc; border-radius:5px;
+    }
+    .hidden { display:none; }
+    .measurement { background:#f9f9f9; padding:15px; border-radius:10px; }
+    button { background:black; color:white; cursor:pointer; }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <img id="product-img" src="" alt="Product">
+    <div class="info">
+      <h2 id="product-name"></h2>
+      <p class="price">₹<span id="product-price"></span></p>
+      <p id="product-desc"></p>
+
+      <!-- Size Selector -->
+      <label for="size">Select Size:</label>
+      <select id="size" onchange="toggleMeasurement()">
+        <option>XS</option>
+        <option>S</option>
+        <option>M</option>
+        <option>L</option>
+        <option>XL</option>
+        <option value="custom">Custom</option>
+      </select>
+
+      <!-- Measurement Form -->
+      <div id="measurement-form" class="hidden measurement">
+        <h3>Enter Measurements</h3>
+        <input type="text" placeholder="Bust (inches)">
+        <input type="text" placeholder="Waist (inches)">
+        <input type="text" placeholder="Hip (inches)">
+        <input type="text" placeholder="Height (inches)">
+        <textarea placeholder="Additional Notes"></textarea>
+      </div>
+
+      <!-- Fabric & Quality -->
+      <h3>Fabric & Quality</h3>
+      <p>Premium fabric, stitched with fine quality tailoring. Perfect for parties and weddings.</p>
+
+      <button>Add to Cart</button>
+    </div>
+  </div>
+
+  <script>
+    // Get product info from URL
+    const params = new URLSearchParams(window.location.search);
+    document.getElementById("product-name").innerText = params.get("name");
+    document.getElementById("product-price").innerText = params.get("price");
+    document.getElementById("product-desc").innerText = params.get("desc");
+    document.getElementById("product-img").src = params.get("img");
+
+    // Show measurement form if "Custom" selected
+    function toggleMeasurement() {
+      const size = document.getElementById("size").value;
+      const form = document.getElementById("measurement-form");
+      if(size === "custom") form.classList.remove("hidden");
+      else form.classList.add("hidden");
+    }
+  </script>
+
+</body>
+</html>
