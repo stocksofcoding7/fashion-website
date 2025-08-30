@@ -6,8 +6,19 @@
   <title>Product Detail</title>
   <style>
     body { font-family: Arial, sans-serif; margin:20px; }
-    .container { display:flex; gap:30px; }
-    img { max-width:400px; border-radius:10px; }
+    .container {
+      display: flex;
+      gap: 30px;
+      align-items: flex-start;
+    }
+    img {
+      max-width: 400px;
+      width: 100%;
+      height: auto;
+      border-radius: 10px;
+      object-fit: cover;
+      flex-shrink: 0;
+    }
     .info { max-width:500px; }
     .price { color:green; font-size:20px; margin:10px 0; }
     select, input, textarea, button {
@@ -30,23 +41,43 @@
 
       <!-- Size Selector -->
       <label for="size">Select Size:</label>
-      <select id="size" onchange="toggleMeasurement()">
+      <select id="size">
         <option>XS</option>
         <option>S</option>
         <option>M</option>
         <option>L</option>
         <option>XL</option>
-        <option value="custom">Custom</option>
       </select>
+
+      <!-- Buy Now Button (added just below size selector) -->
+      <button type="button" id="buy-now" style="margin:16px 0;">Buy Now</button>
+
+      <!-- Unit Selector and Measurement Form -->
+      <label for="unit" style="margin-top:10px;">Unit:</label>
+      <select id="unit" onchange="changeUnit()">
+        <option value="in">Inches</option>
+        <option value="cm">Centimeters</option>
+      </select>
+
+      <!-- Custom Measurement Toggle -->
+      <label style="display:block; margin-top:10px;">
+        <input type="checkbox" id="custom-toggle" onchange="toggleMeasurement()"> Enter Custom Measurements
+      </label>
 
       <!-- Measurement Form -->
       <div id="measurement-form" class="hidden measurement">
-        <h3>Enter Measurements</h3>
-        <input type="text" placeholder="Bust (inches)">
-        <input type="text" placeholder="Waist (inches)">
-        <input type="text" placeholder="Hip (inches)">
-        <input type="text" placeholder="Height (inches)">
-        <textarea placeholder="Additional Notes"></textarea>
+        <input type="number" id="bust" step="0.1" min="0" placeholder="Bust (in)">
+        <input type="number" id="waist" step="0.1" min="0" placeholder="Waist (in)">
+        <input type="number" id="hip" step="0.1" min="0" placeholder="Hip (in)">
+        <input type="number" id="height" step="0.1" min="0" placeholder="Height (in)">
+        <input type="number" id="length" step="0.1" min="0" placeholder="Length (in)">
+        <input type="number" id="sleeve" step="0.1" min="0" placeholder="Sleeve Length (in)">
+        <input type="number" id="shoulder" step="0.1" min="0" placeholder="Shoulder Width (in)">
+        <input type="number" id="armhole" step="0.1" min="0" placeholder="Armhole (in)">
+
+        <textarea id="notes" placeholder="Additional notes"></textarea>
+        <small>Tip: measure snug, not tight.</small>
+        <button type="button" id="save-measurements">Save Measurements</button>
       </div>
 
       <!-- Fabric & Quality -->
@@ -65,13 +96,29 @@
     document.getElementById("product-desc").innerText = params.get("desc");
     document.getElementById("product-img").src = params.get("img");
 
-    // Show measurement form if "Custom" selected
+    // Show measurement form if checkbox checked
     function toggleMeasurement() {
-      const size = document.getElementById("size").value;
+      const checked = document.getElementById("custom-toggle").checked;
       const form = document.getElementById("measurement-form");
-      if(size === "custom") form.classList.remove("hidden");
-      else form.classList.add("hidden");
+      form.classList.toggle("hidden", !checked);
     }
+
+    // Change unit and update placeholders
+    function changeUnit() {
+      const unit = document.getElementById("unit").value;
+      const isInches = unit === "in";
+      document.getElementById("bust").placeholder = `Bust (${isInches ? 'in' : 'cm'})`;
+      document.getElementById("waist").placeholder = `Waist (${isInches ? 'in' : 'cm'})`;
+      document.getElementById("hip").placeholder = `Hip (${isInches ? 'in' : 'cm'})`;
+      document.getElementById("height").placeholder = `Height (${isInches ? 'in' : 'cm'})`;
+      document.getElementById("length").placeholder = `Length (${isInches ? 'in' : 'cm'})`;
+      document.getElementById("sleeve").placeholder = `Sleeve Length (${isInches ? 'in' : 'cm'})`;
+      document.getElementById("shoulder").placeholder = `Shoulder Width (${isInches ? 'in' : 'cm'})`;
+      document.getElementById("armhole").placeholder = `Armhole (${isInches ? 'in' : 'cm'})`;
+    }
+
+    // Set initial placeholders
+    changeUnit();
   </script>
 
 </body>
