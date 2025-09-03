@@ -5,121 +5,441 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Product Detail</title>
   <style>
-    body { font-family: Arial, sans-serif; margin:20px; }
-    .container {
+    body { font-family: 'Roboto', Arial, sans-serif; margin:0; background:#fff; }
+    .main-container {
       display: flex;
-      gap: 30px;
+      max-width: 1200px;
+      margin: 40px auto;
+      gap: 60px;
+      padding: 0 24px;
+    }
+    .left-col {
+      min-width: 420px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+    }
+    .main-img {
+      width: 400px;
+      height: 540px;
+      object-fit: cover;
+      border-radius: 16px;
+      box-shadow: 0 2px 16px rgba(0,0,0,0.07);
+      background: #f7f7f7;
+    }
+    .right-col {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      max-width: 500px;
+    }
+    .product-title {
+      font-size: 2.1em;
+      font-weight: bold;
+      margin-bottom: 8px;
+      letter-spacing: 1px;
+    }
+    .product-desc {
+      color: #444;
+      font-size: 1.1em;
+      margin-bottom: 8px;
+    }
+    .price-row {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 4px;
+    }
+    .price-label {
+      font-weight: bold;
+      font-size: 1.2em;
+      color: #222;
+    }
+    .currency-select {
+      padding: 4px 10px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      font-size: 1em;
+      background: #fafafa;
+      margin-left: 8px;
+    }
+    .tax-note {
+      font-size: 0.95em;
+      color: #888;
+      margin-bottom: 12px;
+    }
+    .size-row {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 10px;
+    }
+    .size-btn {
+      width: 48px;
+      height: 48px;
+      border-radius: 8px;
+      border: 2px solid #ccc;
+      background: #fff;
+      font-weight: bold;
+      font-size: 1em;
+      cursor: pointer;
+      transition: border 0.2s, background 0.2s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .size-btn.selected, .size-btn:hover {
+      border: 2px solid #000;
+      background: #f3f3f3;
+    }
+    .size-btn.custom {
+      width: 120px;
+      font-size: 1em;
+    }
+    .availability {
+      color: #1a8c3b;
+      font-size: 1em;
+      font-weight: 500;
+      margin-bottom: 18px;
+    }
+    .action-row {
+      display: flex;
+      gap: 18px;
+      margin-top: 10px;
+    }
+    .cart-btn {
+      background: #000;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      padding: 14px 32px;
+      font-size: 1em;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .cart-btn:hover {
+      background: #222;
+    }
+    .enquire-btn {
+      background: #fff;
+      color: #000;
+      border: 2px solid #000;
+      border-radius: 8px;
+      padding: 14px 32px;
+      font-size: 1em;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.2s, color 0.2s;
+    }
+    .enquire-btn:hover {
+      background: #000;
+      color: #fff;
+    }
+    .measurement-form {
+      margin-top: 18px;
+      padding: 18px 20px;
+      background: #fafafa;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      max-width: 340px;
+    }
+    .measurement-form label {
+      font-weight: 500;
+      margin-bottom: 4px;
+      color: #222;
+    }
+    .measurement-form input {
+      padding: 8px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      font-size: 1em;
+      width: 100%;
+      box-sizing: border-box;
+    }
+    .measurement-form button {
+      margin-top: 10px;
+      background: #000;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      padding: 10px 0;
+      font-size: 1em;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.2s;
+      width: 100%;
+    }
+    .measurement-form button:hover {
+      background: #222;
+    }
+    .carousel-container {
+      position: relative;
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto 48px auto;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+    }
+    .carousel-track {
+      display: flex;
+      gap: 24px;
+      overflow-x: auto;
+      scroll-behavior: smooth;
+      padding: 16px 0;
+    }
+    .carousel-card {
+      flex: 0 0 22%;
+      background: #fff;
+      border-radius: 14px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+      padding: 16px;
+      text-decoration: none;
+      color: inherit;
+      min-width: 220px;
+      max-width: 240px;
+      transition: box-shadow 0.2s;
+      display: flex;
+      flex-direction: column;
       align-items: flex-start;
     }
-    img {
-      max-width: 400px;
+    .carousel-card:hover {
+      box-shadow: 0 4px 16px rgba(0,0,0,0.10);
+    }
+    .carousel-card img {
       width: 100%;
-      height: auto;
-      border-radius: 10px;
+      height: 320px;
       object-fit: cover;
-      flex-shrink: 0;
+      border-radius: 12px;
+      display: block;
+      margin-bottom: 12px;
     }
-    .info { max-width:500px; }
-    .price { color:green; font-size:20px; margin:10px 0; }
-    select, input, textarea, button {
-      margin:10px 0; padding:8px; width:100%;
-      border:1px solid #ccc; border-radius:5px;
+    @media (max-width: 600px) {
+      .carousel-card img {
+        height: 220px;
+      }
     }
-    .hidden { display:none; }
-    .measurement { background:#f9f9f9; padding:15px; border-radius:10px; }
-    button { background:black; color:white; cursor:pointer; }
+    .carousel-card h3 {
+      font-size: 1.1em;
+      font-weight: 500;
+      margin: 0 0 4px 0;
+      color: #222;
+    }
+    .carousel-card .price {
+      font-size: 1em;
+      color: #444;
+      margin: 0;
+    }
+    .carousel-arrow {
+      background: #fff;
+      border: 2px solid #000;
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      font-size: 1.5em;
+      font-weight: bold;
+      cursor: pointer;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 2;
+      transition: background 0.2s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .carousel-arrow.left { left: 0; }
+    .carousel-arrow.right { right: 0; }
+    .carousel-arrow:hover { background: #000; color: #fff; }
+    @media (max-width: 900px) {
+      .main-container { flex-direction: column; gap: 32px; }
+      .left-col { min-width: 0; }
+      .main-img { width: 100%; height: 340px; }
+      .carousel-card { flex: 0 0 45%; min-width: 160px; max-width: 180px; }
+      .carousel-track { gap: 16px; }
+    }
+    @media (max-width: 600px) {
+      .carousel-card { flex: 0 0 70%; min-width: 120px; max-width: 140px; }
+      .carousel-arrow { width: 32px; height: 32px; font-size: 1.2em; }
+    }
   </style>
 </head>
 <body>
-
-  <div class="container">
-    <img id="product-img" src="" alt="Product">
-    <div class="info">
-      <h2 id="product-name"></h2>
-      <p class="price">₹<span id="product-price"></span></p>
-      <p id="product-desc"></p>
-
-      <!-- Size Selector -->
-      <label for="size">Select Size:</label>
-      <select id="size">
-        <option>XS</option>
-        <option>S</option>
-        <option>M</option>
-        <option>L</option>
-        <option>XL</option>
-      </select>
-
-      <!-- Buy Now Button (added just below size selector) -->
-      <button type="button" id="buy-now" style="margin:16px 0;">Buy Now</button>
-
-      <!-- Unit Selector and Measurement Form -->
-      <label for="unit" style="margin-top:10px;">Unit:</label>
-      <select id="unit" onchange="changeUnit()">
-        <option value="in">Inches</option>
-        <option value="cm">Centimeters</option>
-      </select>
-
-      <!-- Custom Measurement Toggle -->
-      <label style="display:block; margin-top:10px;">
-        <input type="checkbox" id="custom-toggle" onchange="toggleMeasurement()"> Enter Custom Measurements
-      </label>
-
-      <!-- Measurement Form -->
-      <div id="measurement-form" class="hidden measurement">
-        <input type="number" id="bust" step="0.1" min="0" placeholder="Bust (in)">
-        <input type="number" id="waist" step="0.1" min="0" placeholder="Waist (in)">
-        <input type="number" id="hip" step="0.1" min="0" placeholder="Hip (in)">
-        <input type="number" id="height" step="0.1" min="0" placeholder="Height (in)">
-        <input type="number" id="length" step="0.1" min="0" placeholder="Length (in)">
-        <input type="number" id="sleeve" step="0.1" min="0" placeholder="Sleeve Length (in)">
-        <input type="number" id="shoulder" step="0.1" min="0" placeholder="Shoulder Width (in)">
-        <input type="number" id="armhole" step="0.1" min="0" placeholder="Armhole (in)">
-
-        <textarea id="notes" placeholder="Additional notes"></textarea>
-        <small>Tip: measure snug, not tight.</small>
-        <button type="button" id="save-measurements">Save Measurements</button>
+  <div class="main-container">
+    <!-- Left Column: Only Main Image -->
+    <div class="left-col">
+      <img id="product-img" class="main-img" src="assets/explore 1.jpg" alt="Product">
+    </div>
+    <!-- Right Column: Product Info -->
+    <div class="right-col">
+      <div>
+        <div class="product-title" id="product-name">Anarkali Kurti</div>
+        <div class="product-desc" id="product-desc">
+          Fabric: Cotton<br>
+          Color: Black & Gold<br>
+          Style: Anarkali, Embroidered
+        </div>
+        <div class="price-row">
+          <span class="price-label">MRP: ₹<span id="product-price">10000</span></span>
+          <select class="currency-select" id="currency">
+            <option value="INR">₹ INR</option>
+            <option value="USD">$ USD</option>
+            <option value="EUR">€ EUR</option>
+          </select>
+        </div>
+        <div class="tax-note">(Inclusive of all taxes)</div>
+        <div class="size-row">
+          <button class="size-btn selected" onclick="selectSize(this)">XS</button>
+          <button class="size-btn" onclick="selectSize(this)">S</button>
+          <button class="size-btn" onclick="selectSize(this)">M</button>
+          <button class="size-btn" onclick="selectSize(this)">L</button>
+          <button class="size-btn" onclick="selectSize(this)">XL</button>
+          <button class="size-btn custom" id="custom-size-btn" onclick="toggleCustomSize()">Custom Size</button>
+        </div>
+        <!-- Custom Measurement Form (hidden by default) -->
+        <div id="measurement-form" class="measurement-form" style="display:none;">
+          <label for="bust">Bust</label>
+          <input type="number" id="bust" min="0" step="0.1" placeholder="Bust (in)">
+          <label for="waist">Waist</label>
+          <input type="number" id="waist" min="0" step="0.1" placeholder="Waist (in)">
+          <label for="hip">Hip</label>
+          <input type="number" id="hip" min="0" step="0.1" placeholder="Hip (in)">
+          <label for="length">Length</label>
+          <input type="number" id="length" min="0" step="0.1" placeholder="Length (in)">
+          <button type="button" onclick="saveMeasurements()">Save Measurements</button>
+        </div>
+        <div class="availability">Made to order: 7-8 weeks</div>
+        <div class="action-row">
+          <button class="cart-btn">Add to Cart</button>
+          <button class="enquire-btn">Enquire</button>
+        </div>
       </div>
-
-      <!-- Fabric & Quality -->
-      <h3>Fabric & Quality</h3>
-      <p>Premium fabric, stitched with fine quality tailoring. Perfect for parties and weddings.</p>
-
-      <button>Add to Cart</button>
     </div>
   </div>
-
+  <!-- Related Products Section -->
+  <section class="related-products">
+    <h2 style="text-align:center; margin:40px 0 24px 0;">YOU MAY ALSO LIKE</h2>
+    <div class="carousel-container">
+      <button class="carousel-arrow left" aria-label="Scroll left">&lt;</button>
+      <div class="carousel-track">
+        <!-- Product Card 1 -->
+        <a href="product.html?name=Lehenga%20Choli&price=25000&desc=Royal%20Green%20lehenga%20with%20hand-stitched%20details.&img=assets/explore%203.jpg" class="carousel-card">
+          <img src="assets/explore 3.jpg" alt="Lehenga Choli">
+          <h3>Lehenga Choli</h3>
+          <p class="price">₹25000</p>
+        </a>
+        <!-- Product Card 2 -->
+        <a href="product.html?name=Anarkali%20Gown&price=11000&desc=Anarkali%20Gown%20with%20embroidery%20for%20parties.&img=assets/explore%207.jpg" class="carousel-card">
+          <img src="assets/explore 7.jpg" alt="Anarkali Gown">
+          <h3>Anarkali Gown</h3>
+          <p class="price">₹11000</p>
+        </a>
+        <!-- Product Card 3 -->
+        <a href="product.html?name=Bridal%20Sarees&price=18000&desc=Elegant%20golden%20saree%20paired%20with%20contrasting%20red%20blouse.&img=assets/explore%204.jpg" class="carousel-card">
+          <img src="assets/explore 4.jpg" alt="Bridal Sarees">
+          <h3>Bridal Sarees</h3>
+          <p class="price">₹18000</p>
+        </a>
+        <!-- Product Card 4 -->
+        <a href="product.html?name=Indo%20Western%20Ensemble&price=9500&desc=Pink%20Slik%20Zari%20Collared%20Embroidered%20Coat%20And%20Pant.&img=assets/explore%206.jpg" class="carousel-card">
+          <img src="assets/explore 6.jpg" alt="Indo Western Ensemble">
+          <h3>Indo Western Ensemble</h3>
+          <p class="price">₹9500</p>
+        </a>
+        <!-- Product Card 5 -->
+        <a href="product.html?name=Plazzo%20Suit%20Set&price=8500&desc=Festive%20Special%20Chinon%20Silk%20Partywear%20Designer%20Gown%20With%20Palazzo%20&%20Dupatta%20Set.&img=assets/explore%2011.jpg" class="carousel-card">
+          <img src="assets/explore 11.jpg" alt="Plazzo Suit Set">
+          <h3>Plazzo Suit Set</h3>
+          <p class="price">₹8500</p>
+        </a>
+        <!-- Add more cards as needed -->
+      </div>
+      <button class="carousel-arrow right" aria-label="Scroll right">&gt;</button>
+    </div>
+  </section>
   <script>
-    // Get product info from URL
-    const params = new URLSearchParams(window.location.search);
-    document.getElementById("product-name").innerText = params.get("name");
-    document.getElementById("product-price").innerText = params.get("price");
-    document.getElementById("product-desc").innerText = params.get("desc");
-    document.getElementById("product-img").src = params.get("img");
-
-    // Show measurement form if checkbox checked
-    function toggleMeasurement() {
-      const checked = document.getElementById("custom-toggle").checked;
-      const form = document.getElementById("measurement-form");
-      form.classList.toggle("hidden", !checked);
+    // Size button selection
+    function selectSize(btn) {
+      document.querySelectorAll('.size-btn').forEach(b => b.classList.remove('selected'));
+      btn.classList.add('selected');
+      // Hide measurement form if not Custom Size
+      if (!btn.classList.contains('custom')) {
+        document.getElementById('measurement-form').style.display = 'none';
+      }
     }
 
-    // Change unit and update placeholders
-    function changeUnit() {
-      const unit = document.getElementById("unit").value;
-      const isInches = unit === "in";
-      document.getElementById("bust").placeholder = `Bust (${isInches ? 'in' : 'cm'})`;
-      document.getElementById("waist").placeholder = `Waist (${isInches ? 'in' : 'cm'})`;
-      document.getElementById("hip").placeholder = `Hip (${isInches ? 'in' : 'cm'})`;
-      document.getElementById("height").placeholder = `Height (${isInches ? 'in' : 'cm'})`;
-      document.getElementById("length").placeholder = `Length (${isInches ? 'in' : 'cm'})`;
-      document.getElementById("sleeve").placeholder = `Sleeve Length (${isInches ? 'in' : 'cm'})`;
-      document.getElementById("shoulder").placeholder = `Shoulder Width (${isInches ? 'in' : 'cm'})`;
-      document.getElementById("armhole").placeholder = `Armhole (${isInches ? 'in' : 'cm'})`;
+    // Toggle measurement form for Custom Size
+    function toggleCustomSize() {
+      const btn = document.getElementById('custom-size-btn');
+      const form = document.getElementById('measurement-form');
+      // Select the button
+      selectSize(btn);
+      // Toggle form display
+      form.style.display = (form.style.display === 'none' || form.style.display === '') ? 'flex' : 'none';
+      // If hiding, also deselect the button
+      if (form.style.display === 'none') {
+        btn.classList.remove('selected');
+      }
     }
 
-    // Set initial placeholders
-    changeUnit();
+    // Save Measurements function
+    function saveMeasurements() {
+      const bust = document.getElementById('bust').value;
+      const waist = document.getElementById('waist').value;
+      const hip = document.getElementById('hip').value;
+      const length = document.getElementById('length').value;
+      if (!bust || !waist || !hip || !length) {
+        alert("Please fill all measurement fields.");
+        return;
+      }
+      alert(
+        `Measurements Saved:\nBust: ${bust} in\nWaist: ${waist} in\nHip: ${hip} in\nLength: ${length} in`
+      );
+    }
+
+    // Currency conversion (simple demo)
+    const priceINR = 10000;
+    document.getElementById('currency').addEventListener('change', function() {
+      let price = priceINR;
+      if (this.value === 'USD') price = Math.round(priceINR / 83);
+      if (this.value === 'EUR') price = Math.round(priceINR / 90);
+      document.getElementById('product-price').textContent = price;
+      document.querySelector('.price-label').innerHTML =
+        `MRP: ${this.value === 'INR' ? '₹' : this.value === 'USD' ? '$' : '€'}<span id="product-price">${price}</span>`;
+    });
+
+    // Load product info from URL params if present
+    window.addEventListener('DOMContentLoaded', () => {
+      const params = new URLSearchParams(window.location.search);
+      if (params.get("name")) document.getElementById("product-name").textContent = params.get("name");
+      if (params.get("price")) {
+        document.getElementById("product-price").textContent = params.get("price");
+        document.querySelector('.price-label').innerHTML =
+          `MRP: ₹<span id="product-price">${params.get("price")}</span>`;
+      }
+      if (params.get("desc")) document.getElementById("product-desc").textContent = params.get("desc");
+      if (params.get("img")) {
+        document.getElementById("product-img").src = params.get("img");
+      }
+    });
+
+    const track = document.querySelector('.carousel-track');
+    const leftBtn = document.querySelector('.carousel-arrow.left');
+    const rightBtn = document.querySelector('.carousel-arrow.right');
+    const card = document.querySelector('.carousel-card');
+    const cardWidth = card ? card.offsetWidth + 24 : 240; // 24px gap
+
+    leftBtn.addEventListener('click', () => {
+      track.scrollBy({ left: -cardWidth * 2, behavior: 'smooth' });
+    });
+    rightBtn.addEventListener('click', () => {
+      track.scrollBy({ left: cardWidth * 2, behavior: 'smooth' });
+    });
   </script>
-
 </body>
 </html>
