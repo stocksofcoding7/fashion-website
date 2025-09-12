@@ -50,7 +50,7 @@
       <a href="index.html#home">Home</a>
       <a href="explore.html#explore" class="active">Explore Designs</a>
       <a href="index.html#newin">New In</a>
-      <a href="signature_designs.html">Signature Designs</a>
+      <a href="signature_designs.html#signature_designs">Signature Designs</a>
       <a href="index.html#book">Book Now</a>
       <a href="index.html#contact">Contact</a>
     </nav>
@@ -60,11 +60,20 @@
     <h2 style="text-align:center; margin-bottom:24px;">Choose Your Favorite Style</h2>
     <div class="design-gallery" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 32px; padding: 24px;">
 
-    <a class="design-card" href="product.html?name=Anarkali%20Kurti&price=10000&desc=Classic%20black%20anarkali%20with%20golden%20border&img=assets/explore%201.jpg" style="text-decoration:none; color:inherit;">
-      <img src="assets/explore 1.jpg" alt="Anarkali Kurti" style="width:100%; border-radius:12px;">
-      <h3>Anarkali Kurti</h3>
-      <p class="price">₹10000</p>
-    </a>
+    <div class="design-card">
+  <!-- Wishlist button -->
+  <button class="wishlist-btn" aria-label="Add to wishlist" data-id="anarkali-kurti" title="Add to wishlist">♡</button>
+
+  <!-- Whole card clickable -->
+  <a class="design-card
+   href="product.html?name=Anarkali%20Kurti&price=10000&desc=Classic%20black%20anarkali%20with%20golden%20border&img=assets/explore%201.jpg" 
+     style="text-decoration:none; color:inherit;">
+    <img src="assets/explore 1.jpg" alt="Anarkali Kurti" style="width:100%; border-radius:12px;">
+    <h3>Anarkali Kurti</h3>
+    <p class="price">₹10000</p>
+  </a>
+</div>
+
 
     <a class="design-card" href="product.html?name=Jacket%20Lehenga%20Set&price=45000&desc=Mirror%20Jacket%20Lehenga%20Set&img=assets/explore%202.jpg" style="text-decoration:none; color:inherit;">
       <img src="assets/explore 2.jpg" alt="Jacket Lehenga Set" style="width:100%; border-radius:12px;">
