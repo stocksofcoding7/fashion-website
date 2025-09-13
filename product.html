@@ -3,549 +3,226 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Product Detail</title>
-  <link rel="stylesheet" href="style.css" />
-  <style>
-    body { font-family: 'Roboto', Arial, sans-serif; margin:0; background:#fff; }
-    .main-container {
-      display: flex;
-      max-width: 1200px;
-      margin: 40px auto;
-      gap: 60px;
-      padding: 0 24px;
-    }
-    .left-col {
-      min-width: 420px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: flex-start;
-    }
-    .main-img {
-      width: 400px;
-      height: 540px;
-      object-fit: cover;
-      border-radius: 16px;
-      box-shadow: 0 2px 16px rgba(0,0,0,0.07);
-      background: #f7f7f7;
-    }
-    .right-col {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      gap: 24px;
-      max-width: 500px;
-    }
-    .product-title {
-      font-size: 2.1em;
-      font-weight: bold;
-      margin-bottom: 8px;
-      letter-spacing: 1px;
-    }
-    .product-desc {
-      color: #444;
-      font-size: 1.1em;
-      margin-bottom: 8px;
-    }
-    .price-row {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-      margin-bottom: 4px;
-    }
-    .price-label {
-      font-weight: bold;
-      font-size: 1.2em;
-      color: #222;
-    }
-    .currency-select {
-      padding: 4px 10px;
-      border-radius: 5px;
-      border: 1px solid #ccc;
-      font-size: 1em;
-      background: #fafafa;
-      margin-left: 8px;
-    }
-    .tax-note {
-      font-size: 0.95em;
-      color: #888;
-      margin-bottom: 12px;
-    }
-    .size-row {
-      display: flex;
-      gap: 12px;
-      margin-bottom: 10px;
-    }
-    .size-btn {
-      width: 48px;
-      height: 48px;
-      border-radius: 8px;
-      border: 2px solid #ccc;
-      background: #fff;
-      font-weight: bold;
-      font-size: 1em;
-      cursor: pointer;
-      transition: border 0.2s, background 0.2s;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .size-btn.selected, .size-btn:hover {
-      border: 2px solid #000;
-      background: #f3f3f3;
-    }
-    .size-btn.custom {
-      width: 120px;
-      font-size: 1em;
-    }
-    .availability {
-      color: #1a8c3b;
-      font-size: 1em;
-      font-weight: 500;
-      margin-bottom: 18px;
-    }
-    .action-row {
-      display: flex;
-      gap: 18px;
-      margin-top: 10px;
-    }
-    .cart-btn {
-      background: #000;
-      color: #fff;
-      border: none;
-      border-radius: 8px;
-      padding: 14px 32px;
-      font-size: 1em;
-      font-weight: bold;
-      cursor: pointer;
-      transition: background 0.2s;
-    }
-    .cart-btn:hover {
-      background: #222;
-    }
-    .enquire-btn {
-      background: #fff;
-      color: #000;
-      border: 2px solid #000;
-      border-radius: 8px;
-      padding: 14px 32px;
-      font-size: 1em;
-      font-weight: bold;
-      cursor: pointer;
-      transition: background 0.2s, color 0.2s;
-    }
-    .enquire-btn:hover {
-      background: #000;
-      color: #fff;
-    }
-    .measurement-form {
-      margin-top: 18px;
-      padding: 18px 20px;
-      background: #fafafa;
-      border-radius: 12px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
-      display: flex;
-      flex-direction: column;
-      gap: 14px;
-      max-width: 340px;
-    }
-    .measurement-form label {
-      font-weight: 500;
-      margin-bottom: 4px;
-      color: #222;
-    }
-    .measurement-form input {
-      padding: 8px;
-      border-radius: 6px;
-      border: 1px solid #ccc;
-      font-size: 1em;
-      width: 100%;
-      box-sizing: border-box;
-    }
-    .measurement-form button {
-      margin-top: 10px;
-      background: #000;
-      color: #fff;
-      border: none;
-      border-radius: 8px;
-      padding: 10px 0;
-      font-size: 1em;
-      font-weight: bold;
-      cursor: pointer;
-      transition: background 0.2s;
-      width: 100%;
-    }
-    .measurement-form button:hover {
-      background: #222;
-    }
-    .carousel-container {
-      position: relative;
-      width: 100%;
-      max-width: 1200px;
-      margin: 0 auto 48px auto;
-      overflow: hidden;
-      display: flex;
-      align-items: center;
-    }
-    .carousel-track {
-      display: flex;
-      gap: 24px;
-      overflow-x: auto;
-      scroll-behavior: smooth;
-      padding: 16px 0;
-    }
-    .carousel-card {
-      flex: 0 0 22%;
-      background: #fff;
-      border-radius: 14px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
-      padding: 16px;
-      text-decoration: none;
-      color: inherit;
-      min-width: 220px;
-      max-width: 240px;
-      transition: box-shadow 0.2s;
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-    }
-    .carousel-card:hover {
-      box-shadow: 0 4px 16px rgba(0,0,0,0.10);
-    }
-    .carousel-card img {
-      width: 100%;
-      height: 320px;
-      object-fit: cover;
-      border-radius: 12px;
-      display: block;
-      margin-bottom: 12px;
-    }
-    @media (max-width: 600px) {
-      .carousel-card img {
-        height: 220px;
-      }
-    }
-    .carousel-card h3 {
-      font-size: 1.1em;
-      font-weight: 500;
-      margin: 0 0 4px 0;
-      color: #222;
-    }
-    .carousel-card .price {
-      font-size: 1em;
-      color: #444;
-      margin: 0;
-    }
-    .carousel-arrow {
-      background: #fff;
-      border: 2px solid #000;
-      border-radius: 50%;
-      width: 40px;
-      height: 40px;
-      font-size: 1.5em;
-      font-weight: bold;
-      cursor: pointer;
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      z-index: 2;
-      transition: background 0.2s;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .carousel-arrow.left { left: 0; }
-    .carousel-arrow.right { right: 0; }
-    .carousel-arrow:hover { background: #000; color: #fff; }
-    @media (max-width: 900px) {
-      .main-container { flex-direction: column; gap: 32px; }
-      .left-col { min-width: 0; }
-      .main-img { width: 100%; height: 340px; }
-      .carousel-card { flex: 0 0 45%; min-width: 160px; max-width: 180px; }
-      .carousel-track { gap: 16px; }
-    }
-    @media (max-width: 600px) {
-      .carousel-card { flex: 0 0 70%; min-width: 120px; max-width: 140px; }
-      .carousel-arrow { width: 32px; height: 32px; font-size: 1.2em; }
-    }
-    .luxury-footer {
-  background: #111;
-  color: #eee;
-  font-family: 'Roboto', Arial, sans-serif;
-  padding: 48px 0 0 0;
-}
-.footer-main {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 40px;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 24px 32px 24px;
-}
-.footer-col h4 {
-  font-size: 1.1em;
-  letter-spacing: 1px;
-  margin-bottom: 18px;
-  color: #fff;
-  font-weight: 700;
-}
-.footer-col ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-.footer-col ul li {
-  margin-bottom: 12px;
-}
-.footer-col ul li a {
-  color: #ccc;
-  text-decoration: none;
-  font-size: 1em;
-  transition: color 0.2s, border-bottom 0.2s;
-  border-bottom: 1px solid transparent;
-}
-.footer-col ul li a:hover {
-  color: #fff;
-  border-bottom: 1px solid #fff;
-}
-.footer-form {
-  display: flex;
-  align-items: center;
-  gap: 0;
-}
-.footer-form input {
-  padding: 10px 14px;
-  border-radius: 24px 0 0 24px;
-  border: none;
-  outline: none;
-  font-size: 1em;
-  background: #222;
-  color: #eee;
-  width: 140px;
-  transition: box-shadow 0.2s;
-}
-.footer-form input:focus {
-  box-shadow: 0 0 0 2px #fff2;
-}
-.footer-form button {
-  background: #222;
-  color: #fff;
-  border: none;
-  border-radius: 0 24px 24px 0;
-  padding: 10px 18px;
-  cursor: pointer;
-  font-size: 1.2em;
-  transition: background 0.2s;
-}
-.footer-form button:hover {
-  background: #444;
-}
-.footer-bottom {
-  border-top: 1px solid #222;
-  padding: 24px 0 16px 0;
-  margin-top: 24px;
-}
-.footer-currency-social {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 32px;
-  margin-bottom: 16px;
-  flex-wrap: wrap;
-}
-.currency-pill {
-  background: #222;
-  border-radius: 24px;
-  padding: 6px 22px;
-  display: inline-block;
-}
-.currency-pill select {
-  background: transparent;
-  color: #fff;
-  border: none;
-  font-size: 1em;
-  outline: none;
-  cursor: pointer;
-}
-.footer-social {
-  display: flex;
-  gap: 18px;
-}
-.footer-social a {
-  color: #ccc;
-  background: rgba(255,255,255,0.08);
-  border-radius: 50%;
-  width: 38px;
-  height: 38px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.4em;
-  transition: background 0.2s, color 0.2s, transform 0.2s;
-  text-decoration: none;
-}
-.footer-social a:hover {
-  background: #fff;
-  color: #111;
-  transform: scale(1.1);
-}
-.footer-copyright {
-  text-align: center;
-  color: #bbb;
-  font-size: 1em;
-  margin-top: 8px;
-  letter-spacing: 1px;
-}
-
-/* Responsive styles */
-@media (max-width: 900px) {
-  .footer-main {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 32px;
-  }
-}
-@media (max-width: 600px) {
-  .footer-main {
-    grid-template-columns: 1fr;
-    gap: 24px;
-    padding: 0 12px 32px 12px;
-  }
-  .footer-currency-social {
-    flex-direction: column;
-    gap: 18px;
-  }
-}
-
-  </style>
+  <title>Product - House of Rekha</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-  <!-- New back button at top-left corner -->
-  <a href="explore.html" class="back-btn" aria-label="Back to Explore"></a>
+  <!-- Header -->
+  <header class="site-header" id="siteHeader">
+    <div class="header-top">
+      <div aria-hidden="true"></div>
+      <div class="brand" aria-label="Brand">HOUSE OF REKHA</div>
+      <div class="tools">
+        <label class="search" aria-label="Search">
+          <i class="fa-solid fa-magnifying-glass"></i>
+          <input type="search" placeholder="Search" aria-label="Search input"/>
+        </label>
+        <a class="icon-btn" href="wishlist.html" title="Wishlist" aria-label="Wishlist">
+          <i class="fa-regular fa-heart"></i>
+        </a>
+        <a class="icon-btn" href="account.html" title="Account" aria-label="Account">
+          <i class="fa-regular fa-user"></i>
+        </a>
+        <a class="icon-btn" href="bag.html" title="Shopping Bag" aria-label="Shopping bag">
+          <i class="fa-solid fa-bag-shopping"></i>
+        </a>
+      </div>
+    </div>
 
-  <div class="main-container">
-    <!-- Left Column: Only Main Image -->
-    <div class="left-col">
-      <img id="product-img" class="main-img" src="assets/explore 1.jpg" alt="Product">
-    </div>
-    <!-- Right Column: Product Info -->
-    <div class="right-col">
+    <nav class="header-nav" aria-label="Main navigation">
+      <a href="index.html">Home</a>
+      <a href="explore.html">Explore Designs</a>
+      <a href="new_in.html">New In</a>
+      <a href="signature_designs.html">Signature Designs</a>
+      <a href="book_now.html">Book Now</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <!-- Product Content -->
+  <section style="padding: 80px 20px; min-height: 80vh;">
+    <div style="max-width: 1200px; margin: 0 auto;">
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start;">
+        <!-- Product Images -->
       <div>
-        <div class="product-title" id="product-name">Anarkali Kurti</div>
-        <div class="product-desc" id="product-desc">
-          Fabric: Cotton<br>
-          Color: Black & Gold<br>
-          Style: Anarkali, Embroidered
+          <div style="position: relative; margin-bottom: 20px;">
+            <img id="mainImage" src="assets/explore 1.jpg" alt="Product" style="width: 100%; border-radius: 16px; box-shadow: 0 4px 20px var(--shadow);">
+            <div style="position: absolute; top: 20px; right: 20px; display: flex; flex-direction: column; gap: 10px;">
+              <button class="action-btn wishlist" id="productWishlist" title="Add to wishlist">♡</button>
+              <button class="action-btn bag" id="productBag" title="Add to bag">👜</button>
+            </div>
+          </div>
+          <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px;">
+            <img src="assets/explore 1.jpg" alt="Thumbnail 1" class="thumbnail" style="width: 100%; aspect-ratio: 1; object-fit: cover; border-radius: 8px; cursor: pointer; border: 2px solid transparent; transition: border-color 0.3s ease;">
+            <img src="assets/explore 2.jpg" alt="Thumbnail 2" class="thumbnail" style="width: 100%; aspect-ratio: 1; object-fit: cover; border-radius: 8px; cursor: pointer; border: 2px solid transparent; transition: border-color 0.3s ease;">
+            <img src="assets/explore 3.jpg" alt="Thumbnail 3" class="thumbnail" style="width: 100%; aspect-ratio: 1; object-fit: cover; border-radius: 8px; cursor: pointer; border: 2px solid transparent; transition: border-color 0.3s ease;">
+            <img src="assets/explore 4.jpg" alt="Thumbnail 4" class="thumbnail" style="width: 100%; aspect-ratio: 1; object-fit: cover; border-radius: 8px; cursor: pointer; border: 2px solid transparent; transition: border-color 0.3s ease;">
+          </div>
         </div>
-        <div class="price-row">
-          <span class="price-label">MRP: ₹<span id="product-price">10000</span></span>
-          <select class="currency-select" id="currency">
-            <option value="INR">₹ INR</option>
-            <option value="USD">$ USD</option>
-            <option value="EUR">€ EUR</option>
-          </select>
-        </div>
-        <div class="tax-note">(Inclusive of all taxes)</div>
-        <div class="size-row">
-          <button class="size-btn selected" onclick="selectSize(this)">XS</button>
-          <button class="size-btn" onclick="selectSize(this)">S</button>
-          <button class="size-btn" onclick="selectSize(this)">M</button>
-          <button class="size-btn" onclick="selectSize(this)">L</button>
-          <button class="size-btn" onclick="selectSize(this)">XL</button>
-          <button class="size-btn custom" id="custom-size-btn" onclick="toggleCustomSize()">Custom Size</button>
-        </div>
-        <!-- Custom Measurement Form (hidden by default) -->
-        <div id="measurement-form" class="measurement-form" style="display:none;">
-          <label for="bust">Bust</label>
-          <input type="number" id="bust" min="0" step="0.1" placeholder="Bust (in)">
-          <label for="waist">Waist</label>
-          <input type="number" id="waist" min="0" step="0.1" placeholder="Waist (in)">
-          <label for="hip">Hip</label>
-          <input type="number" id="hip" min="0" step="0.1" placeholder="Hip (in)">
-          <label for="length">Length</label>
-          <input type="number" id="length" min="0" step="0.1" placeholder="Length (in)">
-          <button type="button" onclick="saveMeasurements()">Save Measurements</button>
-        </div>
-        <div class="availability">Made to order: 7-8 weeks</div>
-        <div class="action-row">
-          <button class="cart-btn">Add to Cart</button>
-          <button class="enquire-btn">Enquire</button>
+
+        <!-- Product Details -->
+        <div>
+          <h1 id="productName" style="font-size: 2.5rem; margin-bottom: 15px; color: var(--primary-black);">Anarkali Kurti</h1>
+          <p id="productPrice" style="font-size: 2rem; font-weight: 700; color: var(--accent-gold); margin-bottom: 20px;">₹10,000</p>
+          <p id="productDescription" style="font-size: 1.1rem; color: var(--text-gray); margin-bottom: 30px; line-height: 1.6;">Classic black anarkali with golden border. This elegant piece features intricate embroidery and premium fabric, perfect for special occasions.</p>
+
+          <!-- Size Selection -->
+          <div style="margin-bottom: 30px;">
+            <h3 style="font-size: 1.2rem; margin-bottom: 15px; color: var(--primary-black);">Size</h3>
+            <div style="display: flex; gap: 10px;">
+              <button class="size-btn" data-size="S" style="padding: 10px 20px; border: 2px solid var(--medium-gray); background: var(--pure-white); border-radius: 8px; cursor: pointer; transition: all 0.3s ease;">S</button>
+              <button class="size-btn" data-size="M" style="padding: 10px 20px; border: 2px solid var(--medium-gray); background: var(--pure-white); border-radius: 8px; cursor: pointer; transition: all 0.3s ease;">M</button>
+              <button class="size-btn" data-size="L" style="padding: 10px 20px; border: 2px solid var(--medium-gray); background: var(--pure-white); border-radius: 8px; cursor: pointer; transition: all 0.3s ease;">L</button>
+              <button class="size-btn" data-size="XL" style="padding: 10px 20px; border: 2px solid var(--medium-gray); background: var(--pure-white); border-radius: 8px; cursor: pointer; transition: all 0.3s ease;">XL</button>
+            </div>
+          </div>
+
+          <!-- Quantity -->
+          <div style="margin-bottom: 30px;">
+            <h3 style="font-size: 1.2rem; margin-bottom: 15px; color: var(--primary-black);">Quantity</h3>
+            <div style="display: flex; align-items: center; gap: 15px;">
+              <div style="display: flex; align-items: center; gap: 10px; background: var(--light-gray); border-radius: 8px; padding: 8px 12px;">
+                <button id="decreaseQty" style="background: none; border: none; font-size: 1.2rem; cursor: pointer; color: var(--primary-black);">-</button>
+                <span id="quantity" style="font-weight: 600; min-width: 30px; text-align: center;">1</span>
+                <button id="increaseQty" style="background: none; border: none; font-size: 1.2rem; cursor: pointer; color: var(--primary-black);">+</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Add to Bag Button -->
+          <button id="addToBagBtn" class="add-to-bag-btn" style="width: 100%; font-size: 1.2rem; padding: 18px; margin-bottom: 20px;">Add to Bag</button>
+
+          <!-- Product Features -->
+          <div style="background: var(--light-gray); border-radius: 12px; padding: 25px; margin-bottom: 30px;">
+            <h3 style="font-size: 1.2rem; margin-bottom: 15px; color: var(--primary-black);">Product Features</h3>
+            <ul style="list-style: none; padding: 0;">
+              <li style="display: flex; align-items: center; gap: 10px; margin-bottom: 10px; color: var(--text-gray);">
+                <i class="fa-solid fa-check" style="color: var(--accent-gold);"></i>
+                Premium quality fabric
+              </li>
+              <li style="display: flex; align-items: center; gap: 10px; margin-bottom: 10px; color: var(--text-gray);">
+                <i class="fa-solid fa-check" style="color: var(--accent-gold);"></i>
+                Hand-stitched embroidery
+              </li>
+              <li style="display: flex; align-items: center; gap: 10px; margin-bottom: 10px; color: var(--text-gray);">
+                <i class="fa-solid fa-check" style="color: var(--accent-gold);"></i>
+                Free alterations included
+              </li>
+              <li style="display: flex; align-items: center; gap: 10px; margin-bottom: 10px; color: var(--text-gray);">
+                <i class="fa-solid fa-check" style="color: var(--accent-gold);"></i>
+                Express delivery available
+              </li>
+            </ul>
+          </div>
+
+          <!-- Size Guide -->
+          <div style="margin-bottom: 30px;">
+            <button id="sizeGuideBtn" style="background: none; border: none; color: var(--accent-gold); text-decoration: underline; cursor: pointer; font-size: 1rem;">Size Guide</button>
+          </div>
         </div>
       </div>
-    </div>
-  </div>
-  <!-- Related Products Section -->
-  <section class="related-products">
-    <h2 style="text-align:center; margin:40px 0 24px 0;">YOU MAY ALSO LIKE</h2>
-    <div class="carousel-container">
-      <button class="carousel-arrow left" aria-label="Scroll left">&lt;</button>
-      <div class="carousel-track">
-        <!-- Product Card 1 -->
-        <a href="product.html?name=Lehenga%20Choli&price=25000&desc=Royal%20Green%20lehenga%20with%20hand-stitched%20details.&img=assets/explore%203.jpg" class="carousel-card">
-          <img src="assets/explore 3.jpg" alt="Lehenga Choli">
-          <h3>Lehenga Choli</h3>
-          <p class="price">₹25000</p>
-        </a>
-        <!-- Product Card 2 -->
-        <a href="product.html?name=Anarkali%20Gown&price=11000&desc=Anarkali%20Gown%20with%20embroidery%20for%20parties.&img=assets/explore%207.jpg" class="carousel-card">
-          <img src="assets/explore 7.jpg" alt="Anarkali Gown">
-          <h3>Anarkali Gown</h3>
-          <p class="price">₹11000</p>
-        </a>
-        <!-- Product Card 3 -->
-        <a href="product.html?name=Bridal%20Sarees&price=18000&desc=Elegant%20golden%20saree%20paired%20with%20contrasting%20red%20blouse.&img=assets/explore%204.jpg" class="carousel-card">
-          <img src="assets/explore 4.jpg" alt="Bridal Sarees">
-          <h3>Bridal Sarees</h3>
-          <p class="price">₹18000</p>
-        </a>
-        <!-- Product Card 4 -->
-        <a href="product.html?name=Indo%20Western%20Ensemble&price=9500&desc=Pink%20Slik%20Zari%20Collared%20Embroidered%20Coat%20And%20Pant.&img=assets/explore%206.jpg" class="carousel-card">
-          <img src="assets/explore 6.jpg" alt="Indo Western Ensemble">
-          <h3>Indo Western Ensemble</h3>
-          <p class="price">₹9500</p>
-        </a>
-        <!-- Product Card 5 -->
-        <a href="product.html?name=Plazzo%20Suit%20Set&price=8500&desc=Festive%20Special%20Chinon%20Silk%20Partywear%20Designer%20Gown%20With%20Palazzo%20&%20Dupatta%20Set.&img=assets/explore%2011.jpg" class="carousel-card">
-          <img src="assets/explore 11.jpg" alt="Plazzo Suit Set">
-          <h3>Plazzo Suit Set</h3>
-          <p class="price">₹8500</p>
-        </a>
-        <!-- Add more cards as needed -->
-      </div>
-      <button class="carousel-arrow right" aria-label="Scroll right">&gt;</button>
     </div>
   </section>
+
+  <!-- Related Products -->
+  <section style="padding: 80px 20px; background: var(--light-gray);">
+    <div style="max-width: 1200px; margin: 0 auto;">
+      <h2 style="text-align: center; font-size: 2.5rem; margin-bottom: 50px; color: var(--primary-black);">You May Also Like</h2>
+      <div class="luxury-product-grid">
+        <div class="luxury-product-card">
+          <div class="product-image-container">
+            <img src="assets/explore 2.jpg" alt="Related Product 1" class="product-image">
+            <div class="product-actions">
+              <button class="action-btn wishlist" data-id="related-1" title="Add to wishlist">♡</button>
+              <button class="action-btn bag" data-id="related-1" title="Add to bag">👜</button>
+            </div>
+          </div>
+          <div class="product-info">
+            <h3 class="product-title">Jacket Lehenga Set</h3>
+            <p class="product-price">₹45,000</p>
+            <button class="add-to-bag-btn" data-id="related-1" data-name="Jacket Lehenga Set" data-price="45000" data-img="assets/explore 2.jpg">Add to Bag</button>
+          </div>
+        </div>
+
+        <div class="luxury-product-card">
+          <div class="product-image-container">
+            <img src="assets/explore 3.jpg" alt="Related Product 2" class="product-image">
+            <div class="product-actions">
+              <button class="action-btn wishlist" data-id="related-2" title="Add to wishlist">♡</button>
+              <button class="action-btn bag" data-id="related-2" title="Add to bag">👜</button>
+            </div>
+          </div>
+          <div class="product-info">
+            <h3 class="product-title">Lehenga Choli</h3>
+            <p class="product-price">₹25,000</p>
+            <button class="add-to-bag-btn" data-id="related-2" data-name="Lehenga Choli" data-price="25000" data-img="assets/explore 3.jpg">Add to Bag</button>
+          </div>
+        </div>
+
+        <div class="luxury-product-card">
+          <div class="product-image-container">
+            <img src="assets/explore 4.jpg" alt="Related Product 3" class="product-image">
+            <div class="product-actions">
+              <button class="action-btn wishlist" data-id="related-3" title="Add to wishlist">♡</button>
+              <button class="action-btn bag" data-id="related-3" title="Add to bag">👜</button>
+            </div>
+          </div>
+          <div class="product-info">
+            <h3 class="product-title">Bridal Sarees</h3>
+            <p class="product-price">₹18,000</p>
+            <button class="add-to-bag-btn" data-id="related-3" data-name="Bridal Sarees" data-price="18000" data-img="assets/explore 4.jpg">Add to Bag</button>
+          </div>
+        </div>
+
+        <div class="luxury-product-card">
+          <div class="product-image-container">
+            <img src="assets/explore 5.jpg" alt="Related Product 4" class="product-image">
+            <div class="product-actions">
+              <button class="action-btn wishlist" data-id="related-4" title="Add to wishlist">♡</button>
+              <button class="action-btn bag" data-id="related-4" title="Add to bag">👜</button>
+      </div>
+    </div>
+          <div class="product-info">
+            <h3 class="product-title">Flow Of Light Blue</h3>
+            <p class="product-price">₹12,000</p>
+            <button class="add-to-bag-btn" data-id="related-4" data-name="Flow Of Light Blue" data-price="12000" data-img="assets/explore 5.jpg">Add to Bag</button>
+          </div>
+  </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
   <footer class="luxury-footer">
   <div class="footer-container">
     <div class="footer-column">
       <h3>The Company</h3>
       <ul>
-        <li><a href="#">About Us</a></li>
-        <li><a href="#">Press</a></li>
-        <li><a href="#">Sustainability</a></li>
-        <li><a href="#">Couture Process</a></li>
-        <li><a href="#">Runways</a></li>
-        <li><a href="#">Associations</a></li>
-        <li><a href="#">Career</a></li>
+          <li><a href="about_us.html">About Us</a></li>
+          <li><a href="sustainability.html">Sustainability</a></li>
+          <li><a href="couture_process.html">Couture Process</a></li>
+          <li><a href="career.html">Career</a></li>
       </ul>
     </div>
 
     <div class="footer-column">
       <h3>Need Help</h3>
       <ul>
-        <li><a href="#">Contact Us</a></li>
-        <li><a href="#">Book an Appointment</a></li>
-        <li><a href="#">Shipping</a></li>
-        <li><a href="#">FAQ's</a></li>
-        <li><a href="#">Stockist</a></li>
+          <li><a href="contact.html">Contact Us</a></li>
+          <li><a href="book_now.html">Book an Appointment</a></li>
+          <li><a href="shipping.html">Shipping</a></li>
+          <li><a href="FAQ.html">FAQ's</a></li>
+          <li><a href="stockist.html">Stockist</a></li>
       </ul>
     </div>
 
     <div class="footer-column">
       <h3>Legal</h3>
       <ul>
-        <li><a href="#">Privacy & Cookies</a></li>
-        <li><a href="#">Fees and Payment</a></li>
-        <li><a href="#">Terms and Conditions</a></li>
+          <li><a href="privacy.html">Privacy & Cookies</a></li>
+          <li><a href="fees_pay.html">Fees and Payment</a></li>
+          <li><a href="terms.html">Terms and Conditions</a></li>
       </ul>
     </div>
 
@@ -582,87 +259,151 @@
     </div>
   </div>
 
-  <p class="copyright">© Your Brand. All Rights Reserved.</p>
+    <p class="copyright">© House of Rekha. All Rights Reserved.</p>
 </footer>
 
+  <script src="script.js"></script>
   <script>
-    // Size button selection
-    function selectSize(btn) {
-      document.querySelectorAll('.size-btn').forEach(b => b.classList.remove('selected'));
-      btn.classList.add('selected');
-      // Hide measurement form if not Custom Size
-      if (!btn.classList.contains('custom')) {
-        document.getElementById('measurement-form').style.display = 'none';
+    // Product page functionality
+    document.addEventListener('DOMContentLoaded', function() {
+      // Get URL parameters
+      const urlParams = new URLSearchParams(window.location.search);
+      const id = urlParams.get('id');
+      const name = urlParams.get('name');
+      const price = urlParams.get('price');
+      const desc = urlParams.get('desc');
+      const img = urlParams.get('img');
+
+      let product = null;
+      
+      // Find product in PRODUCTS array or use URL params
+      if (id && window.HOF && window.HOF.PRODUCTS) {
+        product = window.HOF.PRODUCTS.find(p => p.id === id);
+      }
+      
+      if (product) {
+        document.getElementById('productName').textContent = product.name;
+        document.getElementById('productPrice').textContent = `₹${product.price.toLocaleString()}`;
+        document.getElementById('productDescription').textContent = product.desc;
+        document.getElementById('mainImage').src = product.img;
+        document.querySelectorAll('.thumbnail')[0].src = product.img;
+      } else if (name) {
+        document.getElementById('productName').textContent = name;
+        document.getElementById('productPrice').textContent = `₹${parseInt(price).toLocaleString()}`;
+        document.getElementById('productDescription').textContent = desc || 'Beautiful designer piece';
+        if (img) {
+          document.getElementById('mainImage').src = img;
+          document.querySelectorAll('.thumbnail')[0].src = img;
+        }
+      }
+
+      // Thumbnail click functionality
+      document.querySelectorAll('.thumbnail').forEach(thumb => {
+        thumb.addEventListener('click', function() {
+          document.getElementById('mainImage').src = this.src;
+          document.querySelectorAll('.thumbnail').forEach(t => t.style.borderColor = 'transparent');
+          this.style.borderColor = 'var(--accent-gold)';
+        });
+      });
+
+      // Size selection
+      document.querySelectorAll('.size-btn').forEach(btn => {
+        btn.addEventListener('click', function() {
+          document.querySelectorAll('.size-btn').forEach(b => {
+            b.style.borderColor = 'var(--medium-gray)';
+            b.style.background = 'var(--pure-white)';
+            b.style.color = 'var(--primary-black)';
+          });
+          this.style.borderColor = 'var(--accent-gold)';
+          this.style.background = 'var(--accent-gold)';
+          this.style.color = 'var(--primary-black)';
+        });
+      });
+
+      // Quantity controls
+      let quantity = 1;
+      document.getElementById('increaseQty').addEventListener('click', () => {
+        quantity++;
+        document.getElementById('quantity').textContent = quantity;
+      });
+      document.getElementById('decreaseQty').addEventListener('click', () => {
+        if (quantity > 1) {
+          quantity--;
+          document.getElementById('quantity').textContent = quantity;
+        }
+      });
+
+      // Add to bag functionality
+      document.getElementById('addToBagBtn').addEventListener('click', function() {
+        const selectedSize = document.querySelector('.size-btn[style*="background: var(--accent-gold)"]')?.getAttribute('data-size') || 'M';
+        
+        if (product) {
+          window.HOF.addToBag(product, selectedSize, quantity);
+        } else {
+          const productData = {
+            id: id || 'product-' + Date.now(),
+            name: document.getElementById('productName').textContent,
+            price: parseInt(document.getElementById('productPrice').textContent.replace(/[₹,]/g, '')),
+            img: document.getElementById('mainImage').src,
+            desc: document.getElementById('productDescription').textContent
+          };
+          window.HOF.addToBag(productData, selectedSize, quantity);
+        }
+        showNotification(`Added ${quantity} item(s) to bag`, 'success');
+      });
+
+      // Wishlist functionality
+      document.getElementById('productWishlist').addEventListener('click', function() {
+        if (product) {
+          window.HOF.toggleWishlist(product, this);
+        } else {
+          const productData = {
+            id: id || 'product-' + Date.now(),
+            name: document.getElementById('productName').textContent,
+            price: parseInt(document.getElementById('productPrice').textContent.replace(/[₹,]/g, '')),
+            img: document.getElementById('mainImage').src,
+            desc: document.getElementById('productDescription').textContent
+          };
+          window.HOF.toggleWishlist(productData, this);
+        }
+      });
+    });
+
+    function showNotification(message, type = 'info') {
+      if (window.HOF) {
+        window.HOF.showNotification(message, type);
+      } else {
+        const notification = document.createElement('div');
+        notification.className = `notification notification-${type}`;
+        notification.textContent = message;
+        notification.style.cssText = `
+          position: fixed;
+          top: 100px;
+          right: 20px;
+          background: ${type === 'success' ? '#4CAF50' : type === 'error' ? '#f44336' : '#2196F3'};
+          color: white;
+          padding: 15px 20px;
+          border-radius: 8px;
+          box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+          z-index: 10000;
+          transform: translateX(100%);
+          transition: transform 0.3s ease;
+        `;
+        
+        document.body.appendChild(notification);
+        
+        setTimeout(() => {
+          notification.style.transform = 'translateX(0)';
+        }, 100);
+        
+        setTimeout(() => {
+          notification.style.transform = 'translateX(100%)';
+          setTimeout(() => {
+            document.body.removeChild(notification);
+          }, 300);
+        }, 3000);
       }
     }
-
-    // Toggle measurement form for Custom Size
-    function toggleCustomSize() {
-      const btn = document.getElementById('custom-size-btn');
-      const form = document.getElementById('measurement-form');
-      // Select the button
-      selectSize(btn);
-      // Toggle form display
-      form.style.display = (form.style.display === 'none' || form.style.display === '') ? 'flex' : 'none';
-      // If hiding, also deselect the button
-      if (form.style.display === 'none') {
-        btn.classList.remove('selected');
-      }
-    }
-
-    // Save Measurements function
-    function saveMeasurements() {
-      const bust = document.getElementById('bust').value;
-      const waist = document.getElementById('waist').value;
-      const hip = document.getElementById('hip').value;
-      const length = document.getElementById('length').value;
-      if (!bust || !waist || !hip || !length) {
-        alert("Please fill all measurement fields.");
-        return;
-      }
-      alert(
-        `Measurements Saved:\nBust: ${bust} in\nWaist: ${waist} in\nHip: ${hip} in\nLength: ${length} in`
-      );
-    }
-
-    // Currency conversion (simple demo)
-    const priceINR = 10000;
-    document.getElementById('currency').addEventListener('change', function() {
-      let price = priceINR;
-      if (this.value === 'USD') price = Math.round(priceINR / 83);
-      if (this.value === 'EUR') price = Math.round(priceINR / 90);
-      document.getElementById('product-price').textContent = price;
-      document.querySelector('.price-label').innerHTML =
-        `MRP: ${this.value === 'INR' ? '₹' : this.value === 'USD' ? '$' : '€'}<span id="product-price">${price}</span>`;
-    });
-
-    // Load product info from URL params if present
-    window.addEventListener('DOMContentLoaded', () => {
-      const params = new URLSearchParams(window.location.search);
-      if (params.get("name")) document.getElementById("product-name").textContent = params.get("name");
-      if (params.get("price")) {
-        document.getElementById("product-price").textContent = params.get("price");
-        document.querySelector('.price-label').innerHTML =
-          `MRP: ₹<span id="product-price">${params.get("price")}</span>`;
-      }
-      if (params.get("desc")) document.getElementById("product-desc").textContent = params.get("desc");
-      if (params.get("img")) {
-        document.getElementById("product-img").src = params.get("img");
-      }
-    });
-
-    const track = document.querySelector('.carousel-track');
-    const leftBtn = document.querySelector('.carousel-arrow.left');
-    const rightBtn = document.querySelector('.carousel-arrow.right');
-    const card = document.querySelector('.carousel-card');
-    const cardWidth = card ? card.offsetWidth + 24 : 240; // 24px gap
-
-    leftBtn.addEventListener('click', () => {
-      track.scrollBy({ left: -cardWidth * 2, behavior: 'smooth' });
-    });
-    rightBtn.addEventListener('click', () => {
-      track.scrollBy({ left: cardWidth * 2, behavior: 'smooth' });
-    });
   </script>
 </body>
 </html>

@@ -1,8 +1,202 @@
-<h2>Login / Signup</h2>
-<input type="text" id="username" placeholder="Username">
-<input type="password" id="password" placeholder="Password">
-<button onclick="signup()">Signup</button>
-<button onclick="login()">Login</button>
-<p id="status"></p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Account - House of Rekha</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+  <!-- Header -->
+  <header class="site-header" id="siteHeader">
+    <div class="header-top">
+      <div aria-hidden="true"></div>
+      <div class="brand" aria-label="Brand">HOUSE OF REKHA</div>
+      <div class="tools">
+        <label class="search" aria-label="Search">
+          <i class="fa-solid fa-magnifying-glass"></i>
+          <input type="search" placeholder="Search" aria-label="Search input"/>
+        </label>
+        <a class="icon-btn" href="wishlist.html" title="Wishlist" aria-label="Wishlist">
+          <i class="fa-regular fa-heart"></i>
+        </a>
+        <a class="icon-btn" href="account.html" title="Account" aria-label="Account">
+          <i class="fa-regular fa-user"></i>
+        </a>
+        <a class="icon-btn" href="bag.html" title="Shopping Bag" aria-label="Shopping bag">
+          <i class="fa-solid fa-bag-shopping"></i>
+        </a>
+      </div>
+    </div>
 
-<script src="js/account.js"></script>
+    <nav class="header-nav" aria-label="Main navigation">
+      <a href="index.html">Home</a>
+      <a href="explore.html">Explore Designs</a>
+      <a href="new_in.html">New In</a>
+      <a href="signature_designs.html">Signature Designs</a>
+      <a href="book_now.html">Book Now</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <!-- Account Content -->
+  <section style="padding: 80px 20px; min-height: 80vh; background: var(--light-gray);">
+    <div style="max-width: 500px; margin: 0 auto;">
+      <div style="text-align: center; margin-bottom: 50px;">
+        <h1 style="font-size: 3rem; color: var(--primary-black); margin-bottom: 20px;">Welcome</h1>
+        <p style="font-size: 1.2rem; color: var(--text-gray);">Sign in to your account or create a new one</p>
+      </div>
+
+      <!-- Login Form -->
+      <div id="login-form" class="account-form">
+        <div style="background: var(--pure-white); border-radius: 16px; padding: 40px; box-shadow: 0 4px 20px var(--shadow);">
+          <h2 style="font-size: 2rem; margin-bottom: 30px; text-align: center; color: var(--primary-black);">Sign In</h2>
+          <form id="loginForm">
+            <div style="margin-bottom: 20px;">
+              <label style="display: block; margin-bottom: 8px; font-weight: 500; color: var(--primary-black);">Email</label>
+              <input type="email" id="loginEmail" required style="width: 100%; padding: 12px; border: 1px solid var(--medium-gray); border-radius: 8px; font-size: 1rem;">
+            </div>
+            <div style="margin-bottom: 30px;">
+              <label style="display: block; margin-bottom: 8px; font-weight: 500; color: var(--primary-black);">Password</label>
+              <input type="password" id="loginPassword" required style="width: 100%; padding: 12px; border: 1px solid var(--medium-gray); border-radius: 8px; font-size: 1rem;">
+            </div>
+            <button type="submit" class="add-to-bag-btn" style="width: 100%; font-size: 1.1rem; padding: 15px; margin-bottom: 20px;">Sign In</button>
+          </form>
+          <p style="text-align: center; color: var(--text-gray);">
+            Don't have an account? 
+            <a href="#" id="show-signup" style="color: var(--accent-gold); text-decoration: none; font-weight: 500;">Sign up</a>
+          </p>
+        </div>
+      </div>
+
+      <!-- Signup Form -->
+      <div id="signup-form" class="account-form" style="display: none;">
+        <div style="background: var(--pure-white); border-radius: 16px; padding: 40px; box-shadow: 0 4px 20px var(--shadow);">
+          <h2 style="font-size: 2rem; margin-bottom: 30px; text-align: center; color: var(--primary-black);">Create Account</h2>
+          <form id="signupForm">
+            <div style="margin-bottom: 20px;">
+              <label style="display: block; margin-bottom: 8px; font-weight: 500; color: var(--primary-black);">Full Name</label>
+              <input type="text" id="signupName" required style="width: 100%; padding: 12px; border: 1px solid var(--medium-gray); border-radius: 8px; font-size: 1rem;">
+            </div>
+            <div style="margin-bottom: 20px;">
+              <label style="display: block; margin-bottom: 8px; font-weight: 500; color: var(--primary-black);">Email</label>
+              <input type="email" id="signupEmail" required style="width: 100%; padding: 12px; border: 1px solid var(--medium-gray); border-radius: 8px; font-size: 1rem;">
+            </div>
+            <div style="margin-bottom: 20px;">
+              <label style="display: block; margin-bottom: 8px; font-weight: 500; color: var(--primary-black);">Phone</label>
+              <input type="tel" id="signupPhone" required style="width: 100%; padding: 12px; border: 1px solid var(--medium-gray); border-radius: 8px; font-size: 1rem;">
+            </div>
+            <div style="margin-bottom: 30px;">
+              <label style="display: block; margin-bottom: 8px; font-weight: 500; color: var(--primary-black);">Password</label>
+              <input type="password" id="signupPassword" required style="width: 100%; padding: 12px; border: 1px solid var(--medium-gray); border-radius: 8px; font-size: 1rem;">
+            </div>
+            <button type="submit" class="add-to-bag-btn" style="width: 100%; font-size: 1.1rem; padding: 15px; margin-bottom: 20px;">Create Account</button>
+          </form>
+          <p style="text-align: center; color: var(--text-gray);">
+            Already have an account? 
+            <a href="#" id="show-login" style="color: var(--accent-gold); text-decoration: none; font-weight: 500;">Sign in</a>
+          </p>
+        </div>
+      </div>
+
+      <!-- User Dashboard -->
+      <div id="user-dashboard" style="display: none;">
+        <div style="background: var(--pure-white); border-radius: 16px; padding: 40px; box-shadow: 0 4px 20px var(--shadow);">
+          <h2 style="font-size: 2rem; margin-bottom: 30px; text-align: center; color: var(--primary-black);">Welcome, <span id="userName"></span></h2>
+          <div style="display: grid; gap: 20px;">
+            <a href="wishlist.html" class="dashboard-link">
+              <i class="fa-regular fa-heart"></i>
+              <span>My Wishlist</span>
+            </a>
+            <a href="bag.html" class="dashboard-link">
+              <i class="fa-solid fa-bag-shopping"></i>
+              <span>Shopping Bag</span>
+            </a>
+            <a href="book_now.html" class="dashboard-link">
+              <i class="fa-regular fa-calendar"></i>
+              <span>Book Appointment</span>
+            </a>
+            <button id="logout-btn" class="dashboard-link" style="background: #e74c3c; color: white; border: none; cursor: pointer;">
+              <i class="fa-solid fa-sign-out-alt"></i>
+              <span>Logout</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="luxury-footer">
+    <div class="footer-container">
+      <div class="footer-column">
+        <h3>The Company</h3>
+        <ul>
+          <li><a href="about_us.html">About Us</a></li>
+          <li><a href="sustainability.html">Sustainability</a></li>
+          <li><a href="couture_process.html">Couture Process</a></li>
+          <li><a href="career.html">Career</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-column">
+        <h3>Need Help</h3>
+        <ul>
+          <li><a href="contact.html">Contact Us</a></li>
+          <li><a href="book_now.html">Book an Appointment</a></li>
+          <li><a href="shipping.html">Shipping</a></li>
+          <li><a href="FAQ.html">FAQ's</a></li>
+          <li><a href="stockist.html">Stockist</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-column">
+        <h3>Legal</h3>
+        <ul>
+          <li><a href="privacy.html">Privacy & Cookies</a></li>
+          <li><a href="fees_pay.html">Fees and Payment</a></li>
+          <li><a href="terms.html">Terms and Conditions</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-column">
+        <h3>Newsletter</h3>
+        <div class="newsletter">
+          <input type="email" placeholder="Your email">
+          <button>→</button>
+        </div>
+      </div>
+
+      <div class="footer-column">
+        <h3>Store Locator</h3>
+        <div class="newsletter">
+          <input type="text" placeholder="Enter location">
+          <button>→</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <select>
+        <option>INR India</option>
+        <option>USD United States</option>
+        <option>EUR Europe</option>
+      </select>
+
+      <div class="social-icons">
+        <a href="#"><i class="fab fa-facebook"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-youtube"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+        <a href="#"><i class="fab fa-pinterest"></i></a>
+      </div>
+    </div>
+
+    <p class="copyright">© House of Rekha. All Rights Reserved.</p>
+  </footer>
+
+  <script src="account.js"></script>
+</body>
+</html>
+
