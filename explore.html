@@ -1,48 +1,167 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Explore</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Explore - House of Rekha</title>
 
-  <!-- Your main CSS -->
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    /* Uniform gallery + action buttons (keeps styling consistent with signature.html) */
+    .design-gallery {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 32px;
+      padding: 24px;
+      align-items: start;
+    }
+    .design-card {
+      display: block;
+      background: transparent;
+      text-decoration: none;
+      color: inherit;
+      overflow: visible;
+    }
+    .card-media {
+      position: relative;
+      border-radius: 12px;
+      overflow: hidden;
+      background: #f7f7f7;
+    }
+    .card-media img {
+      width: 100%;
+      height: 320px;             /* fixed visual height for uniformity */
+      object-fit: cover;         /* crop extra parts */
+      display: block;
+      border-radius: 12px;
+      transition: transform .35s ease;
+    }
+    .design-card:hover .card-media img {
+      transform: scale(1.02);
+    }
 
-  <!-- Font Awesome CDN -->
-  <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-  />
+    /* action buttons overlay (top-right) */
+    .card-actions {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      display: flex;
+      gap: 8px;
+      z-index: 4;
+      opacity: 0;
+      transform: translateY(-6px);
+      transition: opacity .18s ease, transform .18s ease;
+    }
+    .design-card:hover .card-actions,
+    .card-actions:focus-within {
+      opacity: 1;
+      transform: translateY(0);
+    }
+.action-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: none;
+  background: var(--pure-white);
+  color: var(--primary-black);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 10px var(--shadow);
+  font-size: 1.1rem;
+}
+
+.action-btn:hover {
+  background: var(--accent-gold);
+  color: var(--pure-white);
+  transform: scale(1.1);
+}
+
+.action-btn.wishlist.active {
+  background: #e74c3c;
+  color: var(--pure-white);
+}
+
+.product-info {
+  padding: 20px;
+  text-align: center;
+}
+
+.product-title {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: var(--primary-black);
+}
+
+.product-price {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--accent-gold);
+  margin-bottom: 15px;
+}
+
+.add-to-bag-btn {
+  width: 100%;
+  padding: 12px;
+  background: var(--primary-black);
+  color: var(--pure-white);
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.add-to-bag-btn:hover {
+  background: var(--accent-gold);
+  color: var(--primary-black);
+  transform: translateY(-2px);
+}
+
+    /* responsive adjustments */
+    @media (max-width: 900px) {
+      .design-gallery {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+        padding: 18px;
+      }
+      .card-media img { height: 260px; }
+    }
+    @media (max-width: 480px) {
+      .design-gallery {
+        grid-template-columns: 1fr;
+        gap: 16px;
+        padding: 12px;
+      }
+      .card-media img { height: 220px; }
+    }
+  </style>
 </head>
 <body>
-<!-- New back button at top-left corner -->
-<a href="index.html" class="back-btn" aria-label="Back to Home"></a>
+  <!-- single back button (top-left) -->
+  <a href="index.html" class="back-btn" aria-label="Back to Home" style="position:fixed;top:20px;left:20px;width:40px;height:40px;background:#111;color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;text-decoration:none;z-index:1000;box-shadow:0 2px 8px rgba(0,0,0,.12);transition:background .2s;">
+    ←
+  </a>
 
-
-
-  <!-- Simple header -->
+  <!-- Header (keeps existing layout) -->
   <header class="site-header" id="siteHeader">
-    
-    <a href="index.html#explore" class="back-btn" aria-label="Back to Home"></a>
     <div class="header-top">
       <div aria-hidden="true"></div>
       <div class="brand" aria-label="Brand">HOUSE OF REKHA</div>
       <div class="tools">
         <label class="search" aria-label="Search">
           <i class="fa-solid fa-magnifying-glass"></i>
-          <input type="search" placeholder="Search" aria-label="Search input"/>
+          <input type="search" placeholder="Search" />
         </label>
-         <a class="icon-btn" href="wishlist.html" title="Wishlist" aria-label="Wishlist">
-          <i class="fa-regular fa-heart"></i>
-        </a>
-        <a class="icon-btn" href="account.html" title="Account" aria-label="Account">
-          <i class="fa-regular fa-user"></i>
-        </a>
-        <a class="icon-btn" href="cart.html" title="Shopping Bag" aria-label="Shopping bag">
-          <i class="fa-solid fa-bag-shopping"></i>
-        </a>
-      </div>
-    </div>
+        <a class="icon-btn" href="wishlist.html" title="Wishlist"><i class="fa-regular fa-heart"></i></a>
+        <a class="icon-btn" href="account.html" title="Account"><i class="fa-regular fa-user"></i></a>
+        <a class="icon-btn" href="cart.html" title="Shopping Bag"><i class="fa-solid fa-bag-shopping"></i></a>
       </div>
     </div>
 
@@ -55,224 +174,336 @@
       <a href="index.html#contact">Contact</a>
     </nav>
   </header>
+
   <!-- Gallery -->
   <section id="explore">
     <h2 style="text-align:center; margin-bottom:24px;">Choose Your Favorite Style</h2>
-    <div class="design-gallery" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 32px; padding: 24px;">
 
-    <div class="design-card">
-  <!-- Wishlist button -->
-  <button class="wishlist-btn" aria-label="Add to wishlist" data-id="anarkali-kurti" title="Add to wishlist">♡</button>
+    <div class="design-gallery">
+      <!-- Product Card template:
+           anchor wraps card, .card-media contains image + actions -->
+      <a class="design-card" href="product.html?name=Anarkali%20Kurti&price=10000&desc=Classic%20black%20anarkali%20with%20golden%20border&img=assets/explore%201.jpg">
+        <div class="card-media">
+          <img src="assets/explore 1.jpg" alt="Anarkali Kurti">
+          <div class="card-actions">
+            <button class="action-btn wishlist" data-id="royal-lehenga" title="Add to wishlist">♡</button>
+            <button class="action-btn bag" data-id="royal-lehenga" title="Add to bag">👜</button>
+          </div>
+        </div>
+        <h3>Anarkali Kurti</h3>
+        <p class="price">₹10000</p>
+      </a>
 
-  <!-- Whole card clickable -->
-  <a class="design-card
-   href="product.html?name=Anarkali%20Kurti&price=10000&desc=Classic%20black%20anarkali%20with%20golden%20border&img=assets/explore%201.jpg" 
-     style="text-decoration:none; color:inherit;">
-    <img src="assets/explore 1.jpg" alt="Anarkali Kurti" style="width:100%; border-radius:12px;">
-    <h3>Anarkali Kurti</h3>
-    <p class="price">₹10000</p>
-  </a>
-</div>
+      <a class="design-card" href="product.html?name=Jacket%20Lehenga%20Set&price=45000&desc=Mirror%20Jacket%20Lehenga%20Set&img=assets/explore%202.jpg">
+        <div class="card-media">
+          <img src="assets/explore 2.jpg" alt="Jacket Lehenga Set">
+          <div class="card-actions">
+            <button class="action-btn wishlist" data-id="royal-lehenga" title="Add to wishlist">♡</button>
+            <button class="action-btn bag" data-id="royal-lehenga" title="Add to bag">👜</button>
+          </div>
+        </div>
+        <h3>Jacket Lehenga Set</h3>
+        <p class="price">₹45000</p>
+      </a>
 
+      <a class="design-card" href="product.html?name=Lehenga%20Choli&price=25000&desc=Royal%20Green%20lehenga%20with%20hand-stitched%20details.&img=assets/explore%203.jpg">
+        <div class="card-media">
+          <img src="assets/explore 3.jpg" alt="Lehenga Choli">
+          <div class="card-actions">
+            <button class="action-btn wishlist" data-id="royal-lehenga" title="Add to wishlist">♡</button>
+            <button class="action-btn bag" data-id="royal-lehenga" title="Add to bag">👜</button>
+          </div>
+        </div>
+        <h3>Lehenga Choli</h3>
+        <p class="price">₹25000</p>
+      </a>
 
-    <a class="design-card" href="product.html?name=Jacket%20Lehenga%20Set&price=45000&desc=Mirror%20Jacket%20Lehenga%20Set&img=assets/explore%202.jpg" style="text-decoration:none; color:inherit;">
-      <img src="assets/explore 2.jpg" alt="Jacket Lehenga Set" style="width:100%; border-radius:12px;">
-      <h3>Jacket Lehenga Set</h3>
-      <p class="price">₹45000</p>
-    </a>
+      <a class="design-card" href="product.html?name=Bridal%20Sarees&price=18000&desc=Elegant%20golden%20saree%20paired%20with%20contrasting%20red%20blouse.&img=assets/explore%204.jpg">
+        <div class="card-media">
+          <img src="assets/explore 4.jpg" alt="Bridal Sarees">
+          <div class="card-actions">
+            <button class="action-btn wishlist" data-id="royal-lehenga" title="Add to wishlist">♡</button>
+            <button class="action-btn bag" data-id="royal-lehenga" title="Add to bag">👜</button>
+          </div>
+        </div>
+        <h3>Bridal Sarees</h3>
+        <p class="price">₹18000</p>
+      </a>
 
-    <a class="design-card" href="product.html?name=Lehenga%20Choli&price=25000&desc=Royal%20Green%20lehenga%20with%20hand-stitched%20details.&img=assets/explore%203.jpg" style="text-decoration:none; color:inherit;">
-      <img src="assets/explore 3.jpg" alt="Lehenga Choli" style="width:100%; border-radius:12px;">
-      <h3>Lehenga Choli</h3>
-      <p class="price">₹25000</p>
-    </a>
+      <a class="design-card" href="product.html?name=Flow%20Of%20Light%20Blue&price=12000&desc=Blue%20Chiffon%20Cape%20Floor.&img=assets/explore%205.jpg">
+        <div class="card-media">
+          <img src="assets/explore 5.jpg" alt="Flow Of Light Blue">
+          <div class="card-actions">
+            <button class="action-btn wishlist" data-id="royal-lehenga" title="Add to wishlist">♡</button>
+            <button class="action-btn bag" data-id="royal-lehenga" title="Add to bag">👜</button>
+          </div>
+        </div>
+        <h3>Flow Of Light Blue</h3>
+        <p class="price">₹12000</p>
+      </a>
 
-    <a class="design-card" href="product.html?name=Bridal%20Sarees&price=18000&desc=Elegant%20golden%20saree%20paired%20with%20contrasting%20red%20blouse.&img=assets/explore%204.jpg" style="text-decoration:none; color:inherit;">
-      <img src="assets/explore 4.jpg" alt="Bridal Sarees" style="width:100%; border-radius:12px;">
-      <h3>Bridal Sarees</h3>
-      <p class="price">₹18000</p>
-    </a>
+      <a class="design-card" href="product.html?name=Indo%20Western%20Ensemble&price=9500&desc=Pink%20Slik%20Zari%20Collared%20Embroidered%20Coat%20And%20Pant.&img=assets/explore%206.jpg">
+        <div class="card-media">
+          <img src="assets/explore 6.jpg" alt="Indo Western Ensemble">
+          <div class="card-actions">
+            <button class="action-btn wishlist" data-id="royal-lehenga" title="Add to wishlist">♡</button>
+            <button class="action-btn bag" data-id="royal-lehenga" title="Add to bag">👜</button>
+          </div>
+        </div>
+        <h3>Indo Western Ensemble</h3>
+        <p class="price">₹9500</p>
+      </a>
 
-    <a class="design-card" href="product.html?name=Flow%20Of%20Light%20Blue&price=12000&desc=Blue%20Chiffon%20Cape%20Floor.&img=assets/explore%205.jpg" style="text-decoration:none; color:inherit;">
-      <img src="assets/explore 5.jpg" alt="Flow Of Light Blue" style="width:100%; border-radius:12px;">
-      <h3>Flow Of Light Blue</h3>
-      <p class="price">₹12000</p>
-    </a>
+      <a class="design-card" href="product.html?name=Anarkali%20Gown&price=11000&desc=Anarkali%20Gown%20with%20embroidery%20for%20parties.&img=assets/explore%207.jpg">
+        <div class="card-media">
+          <img src="assets/explore 7.jpg" alt="Anarkali Gown">
+          <div class="card-actions">
+           <button class="action-btn wishlist" data-id="royal-lehenga" title="Add to wishlist">♡</button>
+            <button class="action-btn bag" data-id="royal-lehenga" title="Add to bag">👜</button>
+          </div>
+        </div>
+        <h3>Anarkali Gown</h3>
+        <p class="price">₹11000</p>
+      </a>
 
-    <a class="design-card" href="product.html?name=Indo%20Western%20Ensemble&price=9500&desc=Pink%20Slik%20Zari%20Collared%20Embroidered%20Coat%20And%20Pant.&img=assets/explore%206.jpg" style="text-decoration:none; color:inherit;">
-      <img src="assets/explore 6.jpg" alt="Indo Western Ensemble" style="width:100%; border-radius:12px;">
-      <h3>Indo Western Ensemble</h3>
-      <p class="price">₹9500</p>
-    </a>
+      <a class="design-card" href="product.html?name=Black%20Printed%20Anarkali%20Suit&price=36000&desc=organza%20anarkali,%20featuring%20exquisite%20embroidery.&img=assets/explore%208.jpg">
+        <div class="card-media">
+          <img src="assets/explore 8.jpg" alt="Black Printed Anarkali Suit">
+          <div class="card-actions">
+            <button class="action-btn wishlist" data-id="royal-lehenga" title="Add to wishlist">♡</button>
+            <button class="action-btn bag" data-id="royal-lehenga" title="Add to bag">👜</button>
+          </div>
+        </div>
+        <h3>Black Printed Anarkali Suit</h3>
+        <p class="price">₹36000</p>
+      </a>
 
-    <a class="design-card" href="product.html?name=Anarkali%20Gown&price=11000&desc=Anarkali%20Gown%20with%20embroidery%20for%20parties.&img=assets/explore%207.jpg" style="text-decoration:none; color:inherit;">
-      <img src="assets/explore 7.jpg" alt="Anarkali Gown" style="width:100%; border-radius:12px;">
-      <h3>Anarkali Gown</h3>
-      <p class="price">₹11000</p>
-    </a>
+      <a class="design-card" href="product.html?name=Golden%20Tissue%20Anarkali%20Gown&price=13000&desc=Hand%20Embroidered%20Sequins%20&%20Silk%20Border%20Detailing.&img=assets/explore%209.jpg">
+        <div class="card-media">
+          <img src="assets/explore 9.jpg" alt="Golden Tissue Anarkali Gown">
+          <div class="card-actions">
+            <button class="action-btn wishlist" data-id="royal-lehenga" title="Add to wishlist">♡</button>
+            <button class="action-btn bag" data-id="royal-lehenga" title="Add to bag">👜</button>
+          </div>
+        </div>
+        <h3>Golden Tissue Anarkali Gown</h3>
+        <p class="price">₹13000</p>
+      </a>
 
-    <a class="design-card" href="product.html?name=Black%20Printed%20Anarkali%20Suit&price=36000&desc=organza%20anarkali,%20featuring%20exquisite%20embroidery.&img=assets/explore%208.jpg" style="text-decoration:none; color:inherit;">
-      <img src="assets/explore 8.jpg" alt="Black Printed Anarkali Suit" style="width:100%; border-radius:12px;">
-      <h3>Black Printed Anarkali Suit</h3>
-      <p class="price">₹36000</p>
-    </a>
+      <!-- Repeat same structure for all other cards -->
+      <a class="design-card" href="product.html?name=Sharara%20Salwar%20Suit&price=7000&desc=Tabby%20Organza%20in%20Light%20Pink%20Laced%20Sharara%20Kurti%20Dupatta%20Set.&img=assets/explore%2010.jpg">
+        <div class="card-media">
+          <img src="assets/explore 10.jpg" alt="Sharara Salwar Suit">
+          <div class="card-actions">
+           <button class="action-btn wishlist" data-id="royal-lehenga" title="Add to wishlist">♡</button>
+            <button class="action-btn bag" data-id="royal-lehenga" title="Add to bag">👜</button>
+          </div>
+        </div>
+        <h3>Sharara Salwar Suit</h3>
+        <p class="price">₹7000</p>
+      </a>
 
-    <a class="design-card" href="product.html?name=Golden%20Tissue%20Anarkali%20Gown&price=13000&desc=Hand%20Embroidered%20Sequins%20&%20Silk%20Border%20Detailing.&img=assets/explore%209.jpg" style="text-decoration:none; color:inherit;">
-      <img src="assets/explore 9.jpg" alt="Golden Tissue Anarkali Gown" style="width:100%; border-radius:12px;">
-      <h3>Golden Tissue Anarkali Gown</h3>
-      <button class="action-btn wishlist" data-id="signature-anarkali" title="Add to wishlist">♡</button>
-            <button class="action-btn bag" data-id="signature-anarkali" title="Add to bag">👜</button>
-      <p class="price">₹13000</p>
-    </a>
+      <a class="design-card" href="product.html?name=Plazzo%20Suit%20Set&price=8500&desc=Festive%20Special%20Chinon%20Silk%20Partywear%20Designer%20Gown%20With%20Palazzo%20&%20Dupatta%20Set.&img=assets/explore%2011.jpg">
+        <div class="card-media">
+          <img src="assets/explore 11.jpg" alt="Plazzo Suit Set">
+          <div class="card-actions">
+            <button class="action-btn wishlist" data-id="royal-lehenga" title="Add to wishlist">♡</button>
+            <button class="action-btn bag" data-id="royal-lehenga" title="Add to bag">👜</button>
+          </div>
+        </div>
+        <h3>Plazzo Suit Set</h3>
+        <p class="price">₹8500</p>
+      </a>
 
-    <a class="design-card" href="product.html?name=Sharara%20Salwar%20Suit&price=7000&desc=Tabby%20Organza%20in%20Light%20Pink%20Laced%20Sharara%20Kurti%20Dupatta%20Set.&img=assets/explore%2010.jpg" style="text-decoration:none; color:inherit;">
-      <img src="assets/explore 10.jpg" alt="Sharara Salwar Suit" style="width:100%; border-radius:12px;">
-      <h3>Sharara Salwar Suit</h3>
-      <p class="price">₹7000</p>
-    </a>
+      <a class="design-card" href="product.html?name=Floral%20Printed%20Lehenga%20Choli&price=30000&desc=Dark%20Lavender%20Organza%20Floral%20Printed%20&%20Cutdana%20Embroidered%20Lehenga%20Set.&img=assets/explore%2012.jpg">
+        <div class="card-media">
+          <img src="assets/explore 12.jpg" alt="Floral Printed Lehenga Choli">
+          <div class="card-actions">
+           <button class="action-btn wishlist" data-id="royal-lehenga" title="Add to wishlist">♡</button>
+            <button class="action-btn bag" data-id="royal-lehenga" title="Add to bag">👜</button>
+          </div>
+        </div>
+        <h3>Floral Printed Lehenga Choli</h3>
+        <p class="price">₹30000</p>
+      </a>
 
-    <a class="design-card" href="product.html?name=Plazzo%20Suit%20Set&price=8500&desc=Festive%20Special%20Chinon%20Silk%20Partywear%20Designer%20Gown%20With%20Palazzo%20&%20Dupatta%20Set.&img=assets/explore%2011.jpg" style="text-decoration:none; color:inherit;">
-      <img src="assets/explore 11.jpg" alt="Plazzo Suit Set" style="width:100%; border-radius:12px;">
-      <h3>Plazzo Suit Set</h3>
-      <p class="price">₹8500</p>
-    </a>
+      <a class="design-card" href="product.html?name=Floral%20Printed%20Lehenga%20Choli&price=28000&desc=Dark%20Red%20Organza%20Floral%20Printed%20&%20Cutdana%20Embroidered%20Lehenga%20Set.&img=assets/explore%2013.jpg">
+        <div class="card-media">
+          <img src="assets/explore 13.jpg" alt="Floral Printed Lehenga Choli">
+          <div class="card-actions">
+            <button class="action-btn wishlist" data-id="royal-lehenga" title="Add to wishlist">♡</button>
+            <button class="action-btn bag" data-id="royal-lehenga" title="Add to bag">👜</button>
+          </div>
+        </div>
+        <h3>Floral Printed Lehenga Choli</h3>
+        <p class="price">₹28000</p>
+      </a>
 
-    <a class="design-card" href="product.html?name=Floral%20Printed%20Lehenga%20Choli&price=30000&desc=Dark%20Lavender%20Organza%20Floral%20Printed%20&%20Cutdana%20Embroidered%20Lehenga%20Set.&img=assets/explore%2012.jpg" style="text-decoration:none; color:inherit;">
-      <img src="assets/explore 12.jpg" alt="Floral Printed Lehenga Choli" style="width:100%; border-radius:12px;">
-      <h3>Floral Printed Lehenga Choli</h3>
-      <p class="price">₹30000</p>
-    </a>
+      <a class="design-card" href="product.html?name=Plazzo%20Suit%20Anarkali%20Style&price=40000&desc=Soft%20coral%20pishwas%20with%20gold%20florals,%20embellished%20sharara,%20and%20ornate%20dupatta.&img=assets/explore%2014.jpg">
+        <div class="card-media">
+          <img src="assets/explore 14.jpg" alt="Plazzo Suit Anarkali Style">
+          <div class="card-actions">
+            <button class="action-btn wishlist" data-id="royal-lehenga" title="Add to wishlist">♡</button>
+            <button class="action-btn bag" data-id="royal-lehenga" title="Add to bag">👜</button>
+          </div>
+        </div>
+        <h3>Plazzo Suit Anarkali Style</h3>
+        <p class="price">₹40000</p>
+      </a>
 
-    <a class="design-card" href="product.html?name=Floral%20Printed%20Lehenga%20Choli&price=28000&desc=Dark%20Red%20Organza%20Floral%20Printed%20&%20Cutdana%20Embroidered%20Lehenga%20Set.&img=assets/explore%2013.jpg" style="text-decoration:none; color:inherit;">
-      <img src="assets/explore 13.jpg" alt="Floral Printed Lehenga Choli" style="width:100%; border-radius:12px;">
-      <h3>Floral Printed Lehenga Choli</h3>
-      <p class="price">₹28000</p>
-    </a>
+      <a class="design-card" href="product.html?name=Arka%20Cape%20Set&price=65000&desc=Perfect%20for%20festive%20evenings,%20parties,%20and%20modern%20celebrations.&img=assets/explore%2015.jpg">
+        <div class="card-media">
+          <img src="assets/explore 15.jpg" alt="Arka Cape Set">
+          <div class="card-actions">
+            <button class="action-btn wishlist" data-id="royal-lehenga" title="Add to wishlist">♡</button>
+            <button class="action-btn bag" data-id="royal-lehenga" title="Add to bag">👜</button>
+          </div>
+        </div>
+        <h3>Arka Cape Set</h3>
+        <p class="price">₹65000</p>
+      </a>
 
-    <a class="design-card" href="product.html?name=Plazzo%20Suit%20Anarkali%20Style&price=40000&desc=Soft%20coral%20pishwas%20with%20gold%20florals,%20embellished%20sharara,%20and%20ornate%20dupatta.&img=assets/explore%2014.jpg" style="text-decoration:none; color:inherit;">
-      <img src="assets/explore 14.jpg" alt="Plazzo Suit Anarkali Style" style="width:100%; border-radius:12px;">
-      <h3>Plazzo Suit Anarkali Style</h3>
-      <p class="price">₹40000</p>
-    </a>
+      <a class="design-card" href="product.html?name=Lehenga%20Suit&price=50000&desc=Green%20tissue%20sharara%20with%20trims%20border,%20raw%20silk%20kurta%20and%20organza%20dupatta.&img=assets/explore%2016.jpg">
+        <div class="card-media">
+          <img src="assets/explore 16.jpg" alt="Lehenga Suit">
+          <div class="card-actions">
+            <button class="action-btn wishlist" data-id="royal-lehenga" title="Add to wishlist">♡</button>
+            <button class="action-btn bag" data-id="royal-lehenga" title="Add to bag">👜</button>
+          </div>
+        </div>
+        <h3>Lehenga Suit</h3>
+        <p class="price">₹50000</p>
+      </a>
 
-    <a class="design-card" href="product.html?name=Arka%20Cape%20Set&price=65000&desc=Perfect%20for%20festive%20evenings,%20parties,%20and%20modern%20celebrations.&img=assets/explore%2015.jpg" style="text-decoration:none; color:inherit;">
-      <img src="assets/explore 15.jpg" alt="Arka Cape Set" style="width:100%; border-radius:12px;">
-      <h3>Arka Cape Set</h3>
-      <p class="price">₹65000</p>
-    </a>
+      <a class="design-card" href="product.html?name=Indo%20Western%20Lehenga%20Choli&price=52000&desc=Mirror%20Indo%20Western%20Lehenga%20Choli%20Designer%20Wedding%20Party%20Lengha.&img=assets/explore%2017.jpg">
+        <div class="card-media">
+          <img src="assets/explore 17.jpg" alt="Indo Western Lehenga Choli">
+          <div class="card-actions">
+            <button class="action-btn wishlist" data-id="royal-lehenga" title="Add to wishlist">♡</button>
+            <button class="action-btn bag" data-id="royal-lehenga" title="Add to bag">👜</button>
+          </div>
+        </div>
+        <h3>Indo Western Lehenga Choli</h3>
+        <p class="price">₹52000</p>
+      </a>
 
-    <a class="design-card" href="product.html?name=Lehenga%20Suit&price=50000&desc=Green%20tissue%20sharara%20with%20trims%20border,%20raw%20silk%20kurta%20and%20organza%20dupatta.&img=assets/explore%2016.jpg" style="text-decoration:none; color:inherit;">
-      <img src="assets/explore 16.jpg" alt="Lehenga Suit" style="width:100%; border-radius:12px;">
-      <h3>Lehenga Suit</h3>
-      <p class="price">₹50000</p>
-    </a>
+      <a class="design-card" href="product.html?name=Indo%20Western%20Set&price=9000&desc=Mirror%20Indo%20Western%20Lehenga%20Choli%20Pant%20Designer%20Wedding%20Party.&img=assets/explore%2018.jpg">
+        <div class="card-media">
+          <img src="assets/explore 18.jpg" alt="Indo Western Set">
+          <div class="card-actions">
+            <button class="action-btn wishlist" data-id="royal-lehenga" title="Add to wishlist">♡</button>
+            <button class="action-btn bag" data-id="royal-lehenga" title="Add to bag">👜</button>
+          </div>
+        </div>
+        <h3>Indo Western Set</h3>
+        <p class="price">₹9000</p>
+      </a>
 
-    <a class="design-card" href="product.html?name=Indo%20Western%20Lehenga%20Choli&price=52000&desc=Mirror%20Indo%20Western%20Lehenga%20Choli%20Designer%20Wedding%20Party%20Lengha.&img=assets/explore%2017.jpg" style="text-decoration:none; color:inherit;">
-      <img src="assets/explore 17.jpg" alt="Indo Western Lehenga Choli" style="width:100%; border-radius:12px;">
-      <h3>Indo Western Lehenga Choli</h3>
-      <p class="price">₹52000</p>
-    </a>
+      <a class="design-card" href="product.html?name=Kurti%20and%20Sharara%20Set&price=12000&desc=Maroon%20V%20Neck%20Embroidered%20Kurti%20With%20Embroidered%20Bustier%20&%20Sharara.&img=assets/explore%2019.jpg">
+        <div class="card-media">
+          <img src="assets/explore 19.jpg" alt="Kurti and Sharara Set">
+          <div class="card-actions">
+            <button class="action-btn wishlist" data-id="royal-lehenga" title="Add to wishlist">♡</button>
+            <button class="action-btn bag" data-id="royal-lehenga" title="Add to bag">👜</button>
+          </div>
+        </div>
+        <h3>Kurti and Sharara Set</h3>
+        <p class="price">₹12000</p>
+      </a>
 
-    <a class="design-card" href="product.html?name=Indo%20Western%20Set&price=9000&desc=Mirror%20Indo%20Western%20Lehenga%20Choli%20Pant%20Designer%20Wedding%20Party.&img=assets/explore%2018.jpg" style="text-decoration:none; color:inherit;">
-      <img src="assets/explore 18.jpg" alt="Indo Western Set" style="width:100%; border-radius:12px;">
-      <h3>Indo Western Set</h3>
-      <p class="price">₹9000</p>
-    </a>
-
-    <a class="design-card" href="product.html?name=Kurti%20and%20Sharara%20Set&price=12000&desc=Maroon%20V%20Neck%20Embroidered%20Kurti%20With%20Embroidered%20Bustier%20&%20Sharara.&img=assets/explore%2019.jpg" style="text-decoration:none; color:inherit;">
-      <img src="assets/explore 19.jpg" alt="Kurti and Sharara Set" style="width:100%; border-radius:12px;">
-      <h3>Kurti and Sharara Set</h3>
-      <p class="price">₹12000</p>
-    </a>
-
-    <a class="design-card" href="product.html?name=Sequin%20Mini%20Dress%20with%20Sheer%20Overlay&price=75000&desc=Chic%20partywear%20dress%20with%20heavy%20sequin%20work.&img=assets/explore%2020.jpg" style="text-decoration:none; color:inherit;">
-      <img src="assets/explore 20.jpg" alt="Sequin Mini Dress with Sheer Overlay" style="width:100%; border-radius:12px;">
-      <h3>Sequin Mini Dress with Sheer Overlay</h3>
-      <p class="price">₹75000</p>
-    </a>
-
+      <a class="design-card" href="product.html?name=Sequin%20Mini%20Dress%20with%20Sheer%20Overlay&price=75000&desc=Chic%20partywear%20dress%20with%20heavy%20sequin%20work.&img=assets/explore%2020.jpg">
+        <div class="card-media">
+          <img src="assets/explore 20.jpg" alt="Sequin Mini Dress with Sheer Overlay">
+          <div class="card-actions">
+            <button class="action-btn wishlist" data-id="royal-lehenga" title="Add to wishlist">♡</button>
+            <button class="action-btn bag" data-id="royal-lehenga" title="Add to bag">👜</button>
+          </div>
+        </div>
+        <h3>Sequin Mini Dress with Sheer Overlay</h3>
+        <p class="price">₹75000</p>
+      </a>
     </div>
   </section>
-      <!-- FOOTER -->
-<footer class="luxury-footer">
-  <div class="footer-container">
-    
-    <!-- Company -->
-    <div class="footer-column">
-      <h3>The Company</h3>
-      <ul>
-        <li><a href="#">About Us</a></li>
-        <li><a href="#">Sustainability</a></li>
-        <li><a href="#">Couture Process</a></li>
-        <li><a href="#">Career</a></li>
-      </ul>
-    </div>
 
-    <!-- Need Help -->
-    <div class="footer-column">
-      <h3>Need Help</h3>
-      <ul>
-        <li><a href="#">Contact Us</a></li>
-        <li><a href="#">Book an Appointment</a></li>
-        <li><a href="#">Shipping</a></li>
-        <li><a href="#">FAQ's</a></li>
-        <li><a href="#">Stockist</a></li>
-      </ul>
-    </div>
-
-    <!-- Legal -->
-    <div class="footer-column">
-      <h3>Legal</h3>
-      <ul>
-        <li><a href="#">Privacy & Cookies</a></li>
-        <li><a href="#">Fees and Payment</a></li>
-        <li><a href="#">Terms and Conditions</a></li>
-      </ul>
-    </div>
-
-    <!-- Newsletter -->
-    <div class="footer-column">
-      <h3>Newsletter</h3>
-      <div class="newsletter">
-        <input type="email" placeholder="Your email">
-        <button>→</button>
+  <!-- Footer remains unchanged -->
+  <footer class="luxury-footer">
+    <div class="footer-container">
+      <!-- existing footer content -->
+      <div class="footer-column">
+        <h3>The Company</h3>
+        <ul>
+          <li><a href="#">About Us</a></li>
+          <li><a href="#">Sustainability</a></li>
+          <li><a href="#">Couture Process</a></li>
+          <li><a href="#">Career</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h3>Need Help</h3>
+        <ul>
+          <li><a href="#">Contact Us</a></li>
+          <li><a href="#">Book an Appointment</a></li>
+          <li><a href="#">Shipping</a></li>
+          <li><a href="#">FAQ's</a></li>
+          <li><a href="#">Stockist</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h3>Legal</h3>
+        <ul>
+          <li><a href="#">Privacy & Cookies</a></li>
+          <li><a href="#">Fees and Payment</a></li>
+          <li><a href="#">Terms and Conditions</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h3>Newsletter</h3>
+        <div class="newsletter">
+          <input type="email" placeholder="Your email">
+          <button>→</button>
+        </div>
+      </div>
+      <div class="footer-column">
+        <h3>Store Locator</h3>
+        <div class="newsletter">
+          <input type="text" placeholder="Enter location">
+          <button>→</button>
+        </div>
       </div>
     </div>
 
-    <!-- Store Locator -->
-    <div class="footer-column">
-      <h3>Store Locator</h3>
-      <div class="newsletter">
-        <input type="text" placeholder="Enter location">
-        <button>→</button>
+    <div style="display:flex;align-items:center;justify-content:center;gap:24px;margin-top:20px;">
+      <select>
+        <option>INR India</option>
+        <option>USD United States</option>
+        <option>EUR Europe</option>
+      </select>
+
+      <div class="social-icons">
+        <a href="#"><i class="fab fa-facebook"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-youtube"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+        <a href="#"><i class="fab fa-pinterest"></i></a>
       </div>
     </div>
-  </div>
 
-  <!-- Bottom Section -->
-  <div class="footer-column">
-    <select>
-      <option>INR India</option>
-      <option>USD United States</option>
-      <option>EUR Europe</option>
-    </select>
+    <p class="copyright" style="text-align:center;margin-top:18px;color:#bbb;">© Your Brand. All Rights Reserved.</p>
+  </footer>
 
-    <div class="social-icons">
-      <a href="#"><i class="fab fa-facebook"></i></a>
-      <a href="#"><i class="fab fa-instagram"></i></a>
-      <a href="#"><i class="fab fa-youtube"></i></a>
-      <a href="#"><i class="fab fa-twitter"></i></a>
-      <a href="#"><i class="fab fa-pinterest"></i></a>
-    </div>
-  </div>
-
-  <p class="copyright">© Your Brand. All Rights Reserved.</p>
-</footer>
-
-  </div>
-</footer>
 <script>
-// future JS code here
+  // simple handlers for action buttons (demo only)
+  document.addEventListener('click', function(e){
+    const t = e.target.closest('.action-btn');
+    if(!t) return;
+    if(t.classList.contains('wishlist')){
+      e.preventDefault();
+      alert('Added to wishlist');
+    } else if(t.classList.contains('bag')){
+      e.preventDefault();
+      alert('Added to bag');
+    }
+  });
 </script>
 </body>
 </html>

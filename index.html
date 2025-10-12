@@ -1,11 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>House Of Rekha</title>
-  <link rel="stylesheet" href="style.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Roboto&display=swap" rel="stylesheet">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>House of Rekha</title>
+
+  <!-- keep your existing stylesheet -->
+  <link rel="stylesheet" href="style.css">
+  <!-- Font Awesome (if used) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
 
@@ -40,801 +43,405 @@
       <a href="#contact">Contact</a>
     </nav>
   </header>
-  <div style="padding:24px;">
-    <video src="assets/main1.mp4" autoplay loop muted
-           
-           style="display:block; width:100%; height:auto; margin:0; border-radius:16px; object-fit:cover;">
-      Your browser does not support the video tag.
-    </video>
+
+  <!-- Make the main content stretch to fill available space -->
+  <main class="site-main">
+    <!-- Hero Video Section -->
+    <div style="padding:24px;">
+      <video src="assets/main1.mp4" autoplay loop muted
+             style="display:block; width:100%; height:auto; margin:0; border-radius:16px; object-fit:cover;">
+        Your browser does not support the video tag.
+      </video>
+    </div>
+
+    
+    <!-- Row of 4 photos -->
+    <div style="display: flex; gap: 24px; padding: 24px 24px 0 24px; justify-content: center;">
+      <img src="assets/explore 1.jpg" alt="Photo 1" style="width:100%; max-width:300px; aspect-ratio:3/4; object-fit:cover; border-radius:12px;">
+      <img src="assets/explore 2.jpg" alt="Photo 2" style="width:100%; max-width:300px; aspect-ratio:3/4; object-fit:cover; border-radius:12px;">
+      <img src="assets/explore 3.jpg" alt="Photo 3" style="width:100%; max-width:300px; aspect-ratio:3/4; object-fit:cover; border-radius:12px;">
+      <img src="assets/explore 4.jpg" alt="Photo 4" style="width:100%; max-width:300px; aspect-ratio:3/4; object-fit:cover; border-radius:12px;">
+    </div>
+
+    <!-- Landing Section -->
+    <section id="home" class="hero">
+      <p>Elegant tailoring & modern fashion design, stitched with love.</p>
+      <a href="explore.html">
+        <button>Explore Designs</button>
+      </a>
+    </section>
+<!-- Luxury Banner Slider -->
+    <section class="hero-slider" aria-label="Homepage hero slideshow">
+  <div class="slides" role="list">
+    <article class="slide active" role="listitem" style="background-image: url('assets/sig-21.jpg');">
+      <div class="slide-overlay"></div>
+      <div class="slide-inner">
+        <h2 class="slide-title">Elegant Couture</h2>
+        <p class="slide-sub">Discover our exclusive collection of handcrafted luxury fashion</p>
+        <a class="slide-cta" href="explore.html">Shop the Collection</a>
+      </div>
+    </article>
+
+    <article class="slide" role="listitem" style="background-image: url('assets/sig-23.jpg');">
+      <div class="slide-overlay"></div>
+      <div class="slide-inner">
+        <h2 class="slide-title">Signature Designs</h2>
+        <p class="slide-sub">Experience the artistry of our most iconic creations</p>
+        <a class="slide-cta" href="signature_designs.html">Explore</a>
+      </div>
+    </article>
+
+    <article class="slide" role="listitem" style="background-image: url('assets/sig-24.jpg');">
+      <div class="slide-overlay"></div>
+      <div class="slide-inner">
+        <h2 class="slide-title">New Collection</h2>
+        <p class="slide-sub">Be the first to discover our latest arrivals</p>
+        <a class="slide-cta" href="new_in.html">View New In</a>
+      </div>
+    </article>
   </div>
 
-  <!-- Row of 4 photos -->
-  <div style="display: flex; gap: 24px; padding: 24px 24px 0 24px; justify-content: center;">
-    <img src="assets/explore 1.jpg" alt="Photo 1" style="width:100%; max-width:300px; aspect-ratio:3/4; object-fit:cover; border-radius:12px;">
-    <img src="assets/explore 2.jpg" alt="Photo 2" style="width:100%; max-width:300px; aspect-ratio:3/4; object-fit:cover; border-radius:12px;">
-    <img src="assets/explore 3.jpg" alt="Photo 3" style="width:100%; max-width:300px; aspect-ratio:3/4; object-fit:cover; border-radius:12px;">
-    <img src="assets/explore 4.jpg" alt="Photo 4" style="width:100%; max-width:300px; aspect-ratio:3/4; object-fit:cover; border-radius:12px;">
+  <div class="hero-nav">
+    <button class="hero-btn hero-prev" aria-label="Previous slide">‹</button>
+    <button class="hero-btn hero-next" aria-label="Next slide">›</button>
   </div>
 
-<!-- Landing Section -->
-<section id="home" class="hero">
-  <p>Elegant tailoring & modern fashion design, stitched with love.</p>
-  <a href="explore.html">
-  <button>Explore Designs</button>
-</a>
+  <div class="hero-dots" role="tablist" aria-label="Slide navigation"></div>
 </section>
 
+<style>
+/* Full-screen hero slider (insert into index.html or move to style.css) */
+.hero-slider {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  min-height: 520px;
+  overflow: hidden;
+  display: block;
+  box-sizing: border-box;
+  font-family: 'Playfair Display', serif;
+}
 
-  <!-- Explore Designs -->
-  <section id="explore">
-    <h2>Explore Designs</h2>
-    <div class="design-gallery">
-      <div class="design-card">
-        <h3>Kurti - Embroidered</h3>
-        <p>Elegant cotton kurti with floral embroidery</p>
-        <p class="price">$400</p>
-      </div>
-      <!-- Add more design-card blocks as needed -->
-    </div>
-  </section>
+.hero-slider .slides {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
 
-  <!-- New In Section -->
-  <section id="newin">
-    <h2>New In</h2>
-    <p>Discover our latest arrivals and fresh designs</p>
-    <div class="design-gallery">
-      <div class="design-card">
-        <h3>Latest Collection</h3>
-        <p>Fresh designs just arrived</p>
-        <p class="price">$500</p>
-      </div>
-      <!-- Add more new arrival cards -->
-    </div>
-  </section>
+.hero-slider .slide {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center 35%; /* shift focal point slightly down so faces/subjects aren't cut off */
+  background-repeat: no-repeat;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+  will-change: opacity;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: clamp(24px, 6vw, 80px); /* responsive inner padding so content doesn't touch edges */
+  box-sizing: border-box;
+  min-height: 420px; /* avoid extremely short slides */
+}
 
-  <!-- Signature Designs Section -->
-  <section id="signature">
-    <h2>Signature Designs</h2>
-    <p>Our iconic silhouettes and brand signatures</p>
-    <div class="design-gallery">
-      <div class="design-card">
-        <h3>Signature Anarkali</h3>
-        <p>Our most iconic design</p>
-        <p class="price">$800</p>
-      </div>
-      <!-- Add more signature design cards -->
-    </div>
-  </section>
+.hero-slider .slide.active {
+  opacity: 1;
+  z-index: 2;
+}
 
-  <!-- Tailoring Services -->
-  <section id="services">
-    <h2>Tailoring Services</h2>
-    <p>Choose garment, enter measurements & book stitching</p>
-    <form class="tailoring-form">
-      <label>Clothing Type:</label>
-      <select>
-        <option>Kurti</option>
-        <option>Gown</option>
-        <option>Blazer</option>
-        <option>Sherwani</option>
-      </select>
+/* subtle overlay to improve text contrast */
+.slide-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0,0,0,0.35) 0%, rgba(0,0,0,0.45) 40%, rgba(0,0,0,0.55) 100%);
+  pointer-events: none;
+}
 
-      <label>Measurements:</label>
-      <input type="text" placeholder="Bust / Chest (in inches)">
-      <input type="text" placeholder="Waist">
-      <input type="text" placeholder="Hips">
+/* Content container */
+.slide-inner {
+  position: relative;
+  max-width: 720px;
+  color: #fff;
+  z-index: 3;
+  text-shadow: 0 6px 24px rgba(0,0,0,0.45);
+}
 
-      <button type="submit">Submit</button>
-    </form>
-  </section>
+/* Elegant typography with responsive scaling */
+.slide-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(28px, 4.8vw, 56px);
+  line-height: 1.02;
+  margin: 0 0 12px 0;
+  letter-spacing: 0.6px;
+  font-weight: 700;
+}
 
-  <!-- Fashion Design Section -->
-  <section id="designer">
-    <h2>Fashion Designing</h2>
-    <p>Consult with our fashion designer for unique creations</p>
-    <div class="portfolio">
-      <img src="custom1.jpg" alt="Custom Design">
-      <img src="custom2.jpg" alt="Custom Design">
-    </div>
-  </section>
+.slide-sub {
+  font-family: 'Montserrat', sans-serif;
+  font-size: clamp(14px, 1.6vw, 18px);
+  color: rgba(255,255,255,0.92);
+  margin: 0 0 20px 0;
+  max-width: 48ch;
+}
 
-  <!-- Booking Section -->
-  <section id="book">
-    <h2>Book Your Appointment</h2>
-    <form class="booking-form">
-      <input type="text" placeholder="Name">
-      <input type="email" placeholder="Email">
-      <input type="date">
-      <textarea placeholder="Special instructions..."></textarea>
-      <button type="submit">Book Now</button>
-    </form>
-  </section>
+/* CTA button */
+.slide-cta {
+  display: inline-block;
+  background: rgba(255,255,255,0.95);
+  color: #111;
+  padding: 12px 22px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  transition: background .05s ease, transform .08s ease, opacity .08s ease;
 
-  <!-- Contact Section -->
-  <section id="contact">
-    <h2>Contact Us</h2>
-    <p>Email: rekha.couture@gmail.com | Instagram: @rekhacouture</p>
-  </section>
+}
+.slide-cta:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 26px rgba(0,0,0,0.18);
+}
 
-  <!-- Footer -->
-  <footer class="luxury-footer">
-  <div class="footer-container">
-    <div class="footer-column">
-      <h3>The Company</h3>
-      <ul>
-        <li><a href="#">About Us</a></li>
-        <li><a href="#">Press</a></li>
-        <li><a href="#">Sustainability</a></li>
-        <li><a href="#">Couture Process</a></li>
-        <li><a href="#">Runways</a></li>
-        <li><a href="#">Associations</a></li>
-        <li><a href="#">Career</a></li>
-      </ul>
-    </div><!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>House Of Rekha</title>
-  <link rel="stylesheet" href="style.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Roboto&display=swap" rel="stylesheet">
-</head>
-<body>
+/* Navigation arrows */
+.hero-nav { position: absolute; inset: auto 24px 24px auto; top: 50%; transform: translateY(-50%); z-index: 5; pointer-events: none; }
+.hero-btn {
+  pointer-events: auto;
+  background: rgba(0,0,0,0.45);
+  color: #fff;
+  border: none;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  margin: 8px 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 26px;
+  cursor: pointer;
+ transition: background .05s ease, transform .08s ease, opacity .08s ease;
 
-  <!-- Professional Header -->
-  <header class="site-header" id="siteHeader">
-    <div class="header-top">
-      <div aria-hidden="true"></div>
-      <div class="brand" aria-label="Brand">HOUSE OF REKHA</div>
-      <div class="tools">
-        <label class="search" aria-label="Search">
-          <i class="fa-solid fa-magnifying-glass"></i>
-          <input type="search" placeholder="Search" aria-label="Search input"/>
-        </label>
-        <a class="icon-btn" href="#wishlist" title="Wishlist" aria-label="Wishlist">
-          <i class="fa-regular fa-heart"></i>
-        </a>
-        <a class="icon-btn" href="#account" title="Account" aria-label="Account">
-          <i class="fa-regular fa-user"></i>
-        </a>
-        <a class="icon-btn" href="#bag" title="Bag" aria-label="Shopping bag">
-          <i class="fa-solid fa-bag-shopping"></i>
-        </a>
-      </div>
-    </div>
+  box-shadow: 0 6px 20px rgba(0,0,0,0.25);
+}
+.hero-btn:hover { background: rgba(0,0,0,0.7); transform: translateY(-2px); }
 
-    <nav class="header-nav" aria-label="Main navigation">
-      <a href="#home">Home</a>
-      <a href="explore.html">Explore Designs</a>
-      <a href="#newin">New In</a>
-      <a href="#signature">Signature Designs</a>
-      <a href="#book">Book Now</a>
-      <a href="#contact">Contact</a>
-    </nav>
-  </header>
-  <!-- Hero Video Section -->
-  <div style="padding:24px;">
-    <video src="assets/main1.mp4" autoplay loop muted
-           style="display:block; width:100%; height:auto; margin:0; border-radius:16px; object-fit:cover;">
-      Your browser does not support the video tag.
-    </video>
-  </div>
+/* Position left/right arrows */
+.hero-prev { position: absolute; left: 18px; top: 50%; transform: translateY(-50%); }
+.hero-next { position: absolute; right: 18px; top: 50%; transform: translateY(-50%); }
 
-  <!-- Luxury Banner Slider -->
-  <section class="luxury-banner">
-    <div class="banner-slide active" style="background-image: url('assets/explore 1.jpg');">
-      <div class="banner-content">
-        <h1>Elegant Couture</h1>
-        <p>Discover our exclusive collection of handcrafted luxury fashion</p>
-        <a href="explore.html" class="shop-now-btn">Shop Now</a>
-      </div>
-    </div>
-    <div class="banner-slide" style="background-image: url('assets/explore 2.jpg');">
-      <div class="banner-content">
-        <h1>Signature Designs</h1>
-        <p>Experience the artistry of our most iconic creations</p>
-        <a href="signature_designs.html" class="shop-now-btn">Explore</a>
-      </div>
-    </div>
-    <div class="banner-slide" style="background-image: url('assets/explore 3.jpg');">
-      <div class="banner-content">
-        <h1>New Collection</h1>
-        <p>Be the first to discover our latest arrivals</p>
-        <a href="new_in.html" class="shop-now-btn">View New In</a>
-      </div>
-    </div>
-  </section>
+/* Dots */
+.hero-dots {
+  position: absolute;
+  bottom: 28px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 10px;
+  z-index: 6;
+}
+.hero-dots button {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.45);
+  border: none;
+  cursor: pointer;
+  transition: background .05s ease, transform .08s ease, opacity .08s ease;
 
-  <!-- Row of 4 photos -->
-  <div style="display: flex; gap: 24px; padding: 24px 24px 0 24px; justify-content: center;">
-    <img src="assets/explore 1.jpg" alt="Photo 1" style="width:100%; max-width:300px; aspect-ratio:3/4; object-fit:cover; border-radius:12px;">
-    <img src="assets/explore 2.jpg" alt="Photo 2" style="width:100%; max-width:300px; aspect-ratio:3/4; object-fit:cover; border-radius:12px;">
-    <img src="assets/explore 3.jpg" alt="Photo 3" style="width:100%; max-width:300px; aspect-ratio:3/4; object-fit:cover; border-radius:12px;">
-    <img src="assets/explore 4.jpg" alt="Photo 4" style="width:100%; max-width:300px; aspect-ratio:3/4; object-fit:cover; border-radius:12px;">
-  </div>
+}
+.hero-dots button.active { background: rgba(255,255,255,0.96); transform: scale(1.15); }
 
-<!-- Landing Section -->
-<section id="home" class="hero">
-  <p>Elegant tailoring & modern fashion design, stitched with love.</p>
-  <a href="explore.html">
-  <button>Explore Designs</button>
-</a>
-</section>
+/* Responsive layout adjustments */
+@media (max-width: 900px) {
+  .slide-inner { max-width: 90%; margin: 0 auto; text-align: center; }
+  .hero-prev, .hero-next { width: 40px; height: 40px; font-size: 20px; }
+  .hero-nav { left: 12px; right: 12px; }
+  .slide { justify-content: center; padding: 4vw; }
+}
 
-
-  <!-- Explore Designs -->
-  <section id="explore">
-    <h2>Explore Designs</h2>
-    <div class="design-gallery">
-      <div class="design-card">
-        <h3>Kurti - Embroidered</h3>
-        <p>Elegant cotton kurti with floral embroidery</p>
-        <p class="price">$400</p>
-      </div>
-      <!-- Add more design-card blocks as needed -->
-    </div>
-  </section>
-
-  <!-- New In Section -->
-  <section id="newin">
-    <h2>New In</h2>
-    <p>Discover our latest arrivals and fresh designs</p>
-    <div class="design-gallery">
-      <div class="design-card">
-        <h3>Latest Collection</h3>
-        <p>Fresh designs just arrived</p>
-        <p class="price">$500</p>
-      </div>
-      <!-- Add more new arrival cards -->
-    </div>
-  </section>
-
-  <!-- Signature Designs Section -->
-  <section id="signature">
-    <h2>Signature Designs</h2>
-    <p>Our iconic silhouettes and brand signatures</p>
-    <div class="design-gallery">
-      <div class="design-card">
-        <h3>Signature Anarkali</h3>
-        <p>Our most iconic design</p>
-        <p class="price">$800</p>
-      </div>
-      <!-- Add more signature design cards -->
-    </div>
-  </section>
-
-  <!-- Tailoring Services -->
-  <section id="services">
-    <h2>Tailoring Services</h2>
-    <p>Choose garment, enter measurements & book stitching</p>
-    <form class="tailoring-form">
-      <label>Clothing Type:</label>
-      <select>
-        <option>Kurti</option>
-        <option>Gown</option>
-        <option>Blazer</option>
-        <option>Sherwani</option>
-      </select>
-
-      <label>Measurements:</label>
-      <input type="text" placeholder="Bust / Chest (in inches)">
-      <input type="text" placeholder="Waist">
-      <input type="text" placeholder="Hips">
-
-      <button type="submit">Submit</button>
-    </form>
-  </section>
-
-  <!-- Fashion Design Section -->
-  <section id="designer">
-    <h2>Fashion Designing</h2>
-    <p>Consult with our fashion designer for unique creations</p>
-    <div class="portfolio">
-      <img src="custom1.jpg" alt="Custom Design">
-      <img src="custom2.jpg" alt="Custom Design">
-    </div>
-  </section>
-
-  <!-- Booking Section -->
-  <section id="book">
-    <h2>Book Your Appointment</h2>
-    <form class="booking-form">
-      <input type="text" placeholder="Name">
-      <input type="email" placeholder="Email">
-      <input type="date">
-      <textarea placeholder="Special instructions..."></textarea>
-      <button type="submit">Book Now</button>
-    </form>
-  </section>
-
-  <!-- Contact Section -->
-  <section id="contact">
-    <h2>Contact Us</h2>
-    <p>Email: rekha.couture@gmail.com | Instagram: @rekhacouture</p>
-  </section>
-
-  <!-- Footer -->
-  <footer class="luxury-footer">
-  <div class="footer-container">
-    <div class="footer-column">
-      <h3>The Company</h3>
-      <ul>
-        <li><a href="#">About Us</a></li>
-        <li><a href="#">Press</a></li>
-        <li><a href="#">Sustainability</a></li>
-        <li><a href="#">Couture Process</a></li>
-        <li><a href="#">Runways</a></li>
-        <li><a href="#">Associations</a></li>
-        <li><a href="#">Career</a></li>
-      </ul>
-    </div>
-
-    <div class="footer-column">
-      <h3>Need Help</h3>
-      <ul>
-        <li><a href="#">Contact Us</a></li>
-        <li><a href="#">Book an Appointment</a></li>
-        <li><a href="#">Shipping</a></li>
-        <li><a href="#">FAQ's</a></li>
-        <li><a href="#">Stockist</a></li>
-      </ul>
-    </div>
-
-    <div class="footer-column">
-      <h3>Legal</h3>
-      <ul>
-        <li><a href="#">Privacy & Cookies</a></li>
-        <li><a href="#">Fees and Payment</a></li>
-        <li><a href="#">Terms and Conditions</a></li>
-      </ul>
-    </div>
-
-    <div class="footer-column">
-      <h3>Newsletter</h3>
-      <div class="newsletter">
-        <input type="email" placeholder="Your email">
-        <button>→</button>
-      </div>
-    </div>
-
-    <div class="footer-column">
-      <h3>Store Locator</h3>
-      <div class="newsletter">
-        <input type="text" placeholder="Enter location">
-        <button>→</button>
-      </div>
-    </div>
-  </div>
-
-  <!-- Bottom Section -->
-  <div class="footer-bottom">
-    <select>
-      <option>INR India</option>
-      <option>USD United States</option>
-      <option>EUR Europe</option>
-    </select>
-
-    <div class="social-icons">
-      <a href="#"><i class="fab fa-facebook"></i></a>
-      <a href="#"><i class="fab fa-instagram"></i></a>
-      <a href="#"><i class="fab fa-youtube"></i></a>
-      <a href="#"><i class="fab fa-twitter"></i></a>
-      <a href="#"><i class="fab fa-pinterest"></i></a>
-    </div>
-  </div>
-
-  <p class="copyright">© Your Brand. All Rights Reserved.</p>
-</footer>
-
-<!-- Font Awesome for icons -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+@media (max-width: 480px) {
+  .hero-slider { min-height: 420px; height: 76vh; }
+  .slide-title { font-size: clamp(20px, 6.5vw, 34px); }
+  .slide-sub { font-size: 13px; }
+  .slide-cta { padding: 10px 16px; font-size: 14px; }
+}
+</style>
 
 <script>
-  // Smooth scroll behavior
-  document.documentElement.style.scrollBehavior = 'smooth';
+/* Minimal JS slider: fade transitions, auto-play, controls, pause on hover */
+(function () {
+  const slider = document.querySelector('.hero-slider');
+  if (!slider) return;
 
-  document.addEventListener("DOMContentLoaded", () => {
-  const header = document.getElementById("siteHeader");
-  const shrinkThreshold = 12;
+  const slides = Array.from(slider.querySelectorAll('.slide'));
+  const prevBtn = slider.querySelector('.hero-prev');
+  const nextBtn = slider.querySelector('.hero-next');
+  const dotsContainer = slider.querySelector('.hero-dots');
+  const AUTO_MS = 5000;
+  let current = 0;
+  let timer = null;
 
-  const onScroll = () => {
-    if (window.scrollY > shrinkThreshold) {
-      header.classList.add("is-shrunk");
-    } else {
-      header.classList.remove("is-shrunk");
-    }
-  };
-
-  window.addEventListener("scroll", onScroll);
-});
-
-  
-  window.addEventListener('scroll', onScroll, { passive: true });
-  onScroll(); // Check initial state
-
-  // Ensure smooth scroll works for navigation links
-  document.querySelectorAll('.header-nav a[href^="#"]').forEach(link => {
-    link.addEventListener('click', (e) => {
-      const targetId = link.getAttribute('href');
-      const target = document.querySelector(targetId);
-      if (!target) return;
-      e.preventDefault();
-      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    });
+  // create dots
+  slides.forEach((_, i) => {
+    const btn = document.createElement('button');
+    btn.setAttribute('aria-label', `Go to slide ${i + 1}`);
+    btn.addEventListener('click', () => goTo(i, true));
+    dotsContainer.appendChild(btn);
   });
+  const dots = Array.from(dotsContainer.children);
+  function updateDots() {
+    dots.forEach((d, i) => d.classList.toggle('active', i === current));
+  }
+
+  function showSlide(index) {
+    slides.forEach((s, i) => s.classList.toggle('active', i === index));
+    current = index;
+    updateDots();
+  }
+
+  function goTo(index, user = false) {
+    const nextIndex = (index + slides.length) % slides.length;
+    showSlide(nextIndex);
+    if (user) restartAuto();
+  }
+
+  function next() { goTo(current + 1); }
+  function prev() { goTo(current - 1); }
+
+  function startAuto() {
+    stopAuto();
+    timer = setInterval(next, AUTO_MS);
+  }
+  function stopAuto() {
+    if (timer) { clearInterval(timer); timer = null; }
+  }
+  function restartAuto() { stopAuto(); startAuto(); }
+
+  // event listeners
+  if (nextBtn) nextBtn.addEventListener('click', () => { next(); restartAuto(); });
+  if (prevBtn) prevBtn.addEventListener('click', () => { prev(); restartAuto(); });
+
+  slider.addEventListener('mouseenter', stopAuto);
+  slider.addEventListener('mouseleave', startAuto);
+  slider.addEventListener('focusin', stopAuto);
+  slider.addEventListener('focusout', startAuto);
+
+  // init
+  showSlide(0);
+  startAuto();
+
+  // keep visuals stable on resize
+  window.addEventListener('resize', () => {
+    // no layout recalculation needed for this simple fade slider
+  }, { passive: true });
+})();
 </script>
 
-</body>
-</html>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Explore</title>
-
-  <!-- Your main CSS -->
-  <link rel="stylesheet" href="style.css">
-
-  <!-- Font Awesome CDN -->
-  <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-  />
-</head>
-<body>
-<!-- New back button at top-left corner -->
-<a href="index.html" class="back-btn" aria-label="Back to Home"></a>
-
-
-
-  <!-- Simple header -->
-  <header class="site-header" id="siteHeader">
-    
-    <a href="index.html#explore" class="back-btn" aria-label="Back to Home"></a>
-    <div class="header-top">
-      <div aria-hidden="true"></div>
-      <div class="brand" aria-label="Brand">HOUSE OF REKHA</div>
-      <div class="tools">
-        <label class="search" aria-label="Search">
-          <i class="fa-solid fa-magnifying-glass"></i>
-          <input type="search" placeholder="Search" aria-label="Search input"/>
-        </label>
-         <a class="icon-btn" href="wishlist.html" title="Wishlist" aria-label="Wishlist">
-          <i class="fa-regular fa-heart"></i>
-        </a>
-        <a class="icon-btn" href="account.html" title="Account" aria-label="Account">
-          <i class="fa-regular fa-user"></i>
-        </a>
-        <a class="icon-btn" href="cart.html" title="Shopping Bag" aria-label="Shopping bag">
-          <i class="fa-solid fa-bag-shopping"></i>
-        </a>
+  <!-- Footer stays after main -->
+  <footer class="luxury-footer">
+    <div class="footer-container">
+      <div class="footer-column">
+        <h3>The Company</h3>
+        <ul>
+          <li><a href="#">About Us</a></li>
+          <li><a href="#">Press</a></li>
+          <li><a href="#">Sustainability</a></li>
+          <li><a href="#">Couture Process</a></li>
+          <li><a href="#">Runways</a></li>
+          <li><a href="#">Associations</a></li>
+          <li><a href="#">Career</a></li>
+        </ul>
       </div>
-    </div>
+
+      <div class="footer-column">
+        <h3>Need Help</h3>
+        <ul>
+          <li><a href="#">Contact Us</a></li>
+          <li><a href="#">Book an Appointment</a></li>
+          <li><a href="#">Shipping</a></li>
+          <li><a href="#">FAQ's</a></li>
+          <li><a href="#">Stockist</a></li>
+        </ul>
       </div>
-    </div>
 
-    <nav class="header-nav" aria-label="Main navigation">
-      <a href="index.html#home">Home</a>
-      <a href="explore.html#explore" class="active">Explore Designs</a>
-      <a href="index.html#newin">New In</a>
-      <a href="signature_designs.html#signature_designs">Signature Designs</a>
-      <a href="index.html#book">Book Now</a>
-      <a href="index.html#contact">Contact</a>
-    </nav>
-  </header>
-  <!-- Gallery -->
-  <section id="explore">
-    <h2 style="text-align:center; margin-bottom:40px; font-size: 2.5rem; color: var(--primary-black);">Choose Your Favorite Style</h2>
-    <div class="luxury-product-grid">
+      <div class="footer-column">
+        <h3>Legal</h3>
+        <ul>
+          <li><a href="#">Privacy & Cookies</a></li>
+          <li><a href="#">Fees and Payment</a></li>
+          <li><a href="#">Terms and Conditions</a></li>
+        </ul>
+      </div>
 
-    <div class="luxury-product-card">
-      <div class="product-image-container">
-        <img src="assets/explore 1.jpg" alt="Anarkali Kurti" class="product-image">
-        <div class="product-actions">
-          <button class="action-btn wishlist" data-id="anarkali-kurti" title="Add to wishlist">♡</button>
-          <button class="action-btn bag" data-id="anarkali-kurti" title="Add to bag">👜</button>
+      <div class="footer-column">
+        <h3>Newsletter</h3>
+        <div class="newsletter">
+          <input type="email" placeholder="Your email">
+          <button>→</button>
         </div>
       </div>
-      <div class="product-info">
-        <h3 class="product-title">Anarkali Kurti</h3>
-        <p class="product-price">₹10,000</p>
-        <button class="add-to-bag-btn" data-id="anarkali-kurti" data-name="Anarkali Kurti" data-price="10000" data-img="assets/explore 1.jpg">Add to Bag</button>
+
+      <div class="footer-column">
+        <h3>Store Locator</h3>
+        <div class="newsletter">
+          <input type="text" placeholder="Enter location">
+          <button>→</button>
+        </div>
       </div>
     </div>
 
+    <!-- Bottom Section -->
+    <div class="footer-bottom">
+      <select>
+        <option>INR India</option>
+        <option>USD United States</option>
+        <option>EUR Europe</option>
+      </select>
 
-    <a class="design-card" href="product.html?name=Jacket%20Lehenga%20Set&price=45000&desc=Mirror%20Jacket%20Lehenga%20Set&img=assets/explore%202.jpg" style="text-decoration:none; color:inherit;">
-      <img src="assets/explore 2.jpg" alt="Jacket Lehenga Set" style="width:100%; border-radius:12px;">
-      <h3>Jacket Lehenga Set</h3>
-      <p class="price">₹45000</p>
-    </a>
-
-    <a class="design-card" href="product.html?name=Lehenga%20Choli&price=25000&desc=Royal%20Green%20lehenga%20with%20hand-stitched%20details.&img=assets/explore%203.jpg" style="text-decoration:none; color:inherit;">
-      <img src="assets/explore 3.jpg" alt="Lehenga Choli" style="width:100%; border-radius:12px;">
-      <h3>Lehenga Choli</h3>
-      <p class="price">₹25000</p>
-    </a>
-
-    <a class="design-card" href="product.html?name=Bridal%20Sarees&price=18000&desc=Elegant%20golden%20saree%20paired%20with%20contrasting%20red%20blouse.&img=assets/explore%204.jpg" style="text-decoration:none; color:inherit;">
-      <img src="assets/explore 4.jpg" alt="Bridal Sarees" style="width:100%; border-radius:12px;">
-      <h3>Bridal Sarees</h3>
-      <p class="price">₹18000</p>
-    </a>
-
-    <a class="design-card" href="product.html?name=Flow%20Of%20Light%20Blue&price=12000&desc=Blue%20Chiffon%20Cape%20Floor.&img=assets/explore%205.jpg" style="text-decoration:none; color:inherit;">
-      <img src="assets/explore 5.jpg" alt="Flow Of Light Blue" style="width:100%; border-radius:12px;">
-      <h3>Flow Of Light Blue</h3>
-      <p class="price">₹12000</p>
-    </a>
-
-    <a class="design-card" href="product.html?name=Indo%20Western%20Ensemble&price=9500&desc=Pink%20Slik%20Zari%20Collared%20Embroidered%20Coat%20And%20Pant.&img=assets/explore%206.jpg" style="text-decoration:none; color:inherit;">
-      <img src="assets/explore 6.jpg" alt="Indo Western Ensemble" style="width:100%; border-radius:12px;">
-      <h3>Indo Western Ensemble</h3>
-      <p class="price">₹9500</p>
-    </a>
-
-    <a class="design-card" href="product.html?name=Anarkali%20Gown&price=11000&desc=Anarkali%20Gown%20with%20embroidery%20for%20parties.&img=assets/explore%207.jpg" style="text-decoration:none; color:inherit;">
-      <img src="assets/explore 7.jpg" alt="Anarkali Gown" style="width:100%; border-radius:12px;">
-      <h3>Anarkali Gown</h3>
-      <p class="price">₹11000</p>
-    </a>
-
-    <a class="design-card" href="product.html?name=Black%20Printed%20Anarkali%20Suit&price=36000&desc=organza%20anarkali,%20featuring%20exquisite%20embroidery.&img=assets/explore%208.jpg" style="text-decoration:none; color:inherit;">
-      <img src="assets/explore 8.jpg" alt="Black Printed Anarkali Suit" style="width:100%; border-radius:12px;">
-      <h3>Black Printed Anarkali Suit</h3>
-      <p class="price">₹36000</p>
-    </a>
-
-    <a class="design-card" href="product.html?name=Golden%20Tissue%20Anarkali%20Gown&price=13000&desc=Hand%20Embroidered%20Sequins%20&%20Silk%20Border%20Detailing.&img=assets/explore%209.jpg" style="text-decoration:none; color:inherit;">
-      <img src="assets/explore 9.jpg" alt="Golden Tissue Anarkali Gown" style="width:100%; border-radius:12px;">
-      <h3>Golden Tissue Anarkali Gown</h3>
-      <p class="price">₹13000</p>
-    </a>
-
-    <a class="design-card" href="product.html?name=Sharara%20Salwar%20Suit&price=7000&desc=Tabby%20Organza%20in%20Light%20Pink%20Laced%20Sharara%20Kurti%20Dupatta%20Set.&img=assets/explore%2010.jpg" style="text-decoration:none; color:inherit;">
-      <img src="assets/explore 10.jpg" alt="Sharara Salwar Suit" style="width:100%; border-radius:12px;">
-      <h3>Sharara Salwar Suit</h3>
-      <p class="price">₹7000</p>
-    </a>
-
-    <a class="design-card" href="product.html?name=Plazzo%20Suit%20Set&price=8500&desc=Festive%20Special%20Chinon%20Silk%20Partywear%20Designer%20Gown%20With%20Palazzo%20&%20Dupatta%20Set.&img=assets/explore%2011.jpg" style="text-decoration:none; color:inherit;">
-      <img src="assets/explore 11.jpg" alt="Plazzo Suit Set" style="width:100%; border-radius:12px;">
-      <h3>Plazzo Suit Set</h3>
-      <p class="price">₹8500</p>
-    </a>
-
-    <a class="design-card" href="product.html?name=Floral%20Printed%20Lehenga%20Choli&price=30000&desc=Dark%20Lavender%20Organza%20Floral%20Printed%20&%20Cutdana%20Embroidered%20Lehenga%20Set.&img=assets/explore%2012.jpg" style="text-decoration:none; color:inherit;">
-      <img src="assets/explore 12.jpg" alt="Floral Printed Lehenga Choli" style="width:100%; border-radius:12px;">
-      <h3>Floral Printed Lehenga Choli</h3>
-      <p class="price">₹30000</p>
-    </a>
-
-    <a class="design-card" href="product.html?name=Floral%20Printed%20Lehenga%20Choli&price=28000&desc=Dark%20Red%20Organza%20Floral%20Printed%20&%20Cutdana%20Embroidered%20Lehenga%20Set.&img=assets/explore%2013.jpg" style="text-decoration:none; color:inherit;">
-      <img src="assets/explore 13.jpg" alt="Floral Printed Lehenga Choli" style="width:100%; border-radius:12px;">
-      <h3>Floral Printed Lehenga Choli</h3>
-      <p class="price">₹28000</p>
-    </a>
-
-    <a class="design-card" href="product.html?name=Plazzo%20Suit%20Anarkali%20Style&price=40000&desc=Soft%20coral%20pishwas%20with%20gold%20florals,%20embellished%20sharara,%20and%20ornate%20dupatta.&img=assets/explore%2014.jpg" style="text-decoration:none; color:inherit;">
-      <img src="assets/explore 14.jpg" alt="Plazzo Suit Anarkali Style" style="width:100%; border-radius:12px;">
-      <h3>Plazzo Suit Anarkali Style</h3>
-      <p class="price">₹40000</p>
-    </a>
-
-    <a class="design-card" href="product.html?name=Arka%20Cape%20Set&price=65000&desc=Perfect%20for%20festive%20evenings,%20parties,%20and%20modern%20celebrations.&img=assets/explore%2015.jpg" style="text-decoration:none; color:inherit;">
-      <img src="assets/explore 15.jpg" alt="Arka Cape Set" style="width:100%; border-radius:12px;">
-      <h3>Arka Cape Set</h3>
-      <p class="price">₹65000</p>
-    </a>
-
-    <a class="design-card" href="product.html?name=Lehenga%20Suit&price=50000&desc=Green%20tissue%20sharara%20with%20trims%20border,%20raw%20silk%20kurta%20and%20organza%20dupatta.&img=assets/explore%2016.jpg" style="text-decoration:none; color:inherit;">
-      <img src="assets/explore 16.jpg" alt="Lehenga Suit" style="width:100%; border-radius:12px;">
-      <h3>Lehenga Suit</h3>
-      <p class="price">₹50000</p>
-    </a>
-
-    <a class="design-card" href="product.html?name=Indo%20Western%20Lehenga%20Choli&price=52000&desc=Mirror%20Indo%20Western%20Lehenga%20Choli%20Designer%20Wedding%20Party%20Lengha.&img=assets/explore%2017.jpg" style="text-decoration:none; color:inherit;">
-      <img src="assets/explore 17.jpg" alt="Indo Western Lehenga Choli" style="width:100%; border-radius:12px;">
-      <h3>Indo Western Lehenga Choli</h3>
-      <p class="price">₹52000</p>
-    </a>
-
-    <a class="design-card" href="product.html?name=Indo%20Western%20Set&price=9000&desc=Mirror%20Indo%20Western%20Lehenga%20Choli%20Pant%20Designer%20Wedding%20Party.&img=assets/explore%2018.jpg" style="text-decoration:none; color:inherit;">
-      <img src="assets/explore 18.jpg" alt="Indo Western Set" style="width:100%; border-radius:12px;">
-      <h3>Indo Western Set</h3>
-      <p class="price">₹9000</p>
-    </a>
-
-    <a class="design-card" href="product.html?name=Kurti%20and%20Sharara%20Set&price=12000&desc=Maroon%20V%20Neck%20Embroidered%20Kurti%20With%20Embroidered%20Bustier%20&%20Sharara.&img=assets/explore%2019.jpg" style="text-decoration:none; color:inherit;">
-      <img src="assets/explore 19.jpg" alt="Kurti and Sharara Set" style="width:100%; border-radius:12px;">
-      <h3>Kurti and Sharara Set</h3>
-      <p class="price">₹12000</p>
-    </a>
-
-    <a class="design-card" href="product.html?name=Sequin%20Mini%20Dress%20with%20Sheer%20Overlay&price=75000&desc=Chic%20partywear%20dress%20with%20heavy%20sequin%20work.&img=assets/explore%2020.jpg" style="text-decoration:none; color:inherit;">
-      <img src="assets/explore 20.jpg" alt="Sequin Mini Dress with Sheer Overlay" style="width:100%; border-radius:12px;">
-      <h3>Sequin Mini Dress with Sheer Overlay</h3>
-      <p class="price">₹75000</p>
-    </a>
-
+      <div class="social-icons">
+        <a href="#"><i class="fab fa-facebook"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-youtube"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+        <a href="#"><i class="fab fa-pinterest"></i></a>
+      </div>
     </div>
-  </section>
-      <!-- FOOTER -->
-<footer class="luxury-footer">
-  <div class="footer-container">
+
+    <p class="copyright">© Your Brand. All Rights Reserved.</p>
+  </footer>
+
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <script>
+    // Smooth scroll behavior
+    document.documentElement.style.scrollBehavior = 'smooth';
+
+    // Header shrink on scroll
+    const header = document.getElementById('siteHeader');
+    const shrinkThreshold = 12;
+
+    const onScroll = () => {
+      if (window.scrollY > shrinkThreshold) {
+        header.classList.add('is-shrunk');
+      } else {
+        header.classList.remove('is-shrunk');
+      }
+    };
     
-    <!-- Company -->
-    <div class="footer-column">
-      <h3>The Company</h3>
-      <ul>
-        <li><a href="#">About Us</a></li>
-        <li><a href="#">Sustainability</a></li>
-        <li><a href="#">Couture Process</a></li>
-        <li><a href="#">Career</a></li>
-      </ul>
-    </div>
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll(); // Check initial state
 
-    <!-- Need Help -->
-    <div class="footer-column">
-      <h3>Need Help</h3>
-      <ul>
-        <li><a href="#">Contact Us</a></li>
-        <li><a href="#">Book an Appointment</a></li>
-        <li><a href="#">Shipping</a></li>
-        <li><a href="#">FAQ's</a></li>
-        <li><a href="#">Stockist</a></li>
-      </ul>
-    </div>
-
-    <!-- Legal -->
-    <div class="footer-column">
-      <h3>Legal</h3>
-      <ul>
-        <li><a href="#">Privacy & Cookies</a></li>
-        <li><a href="#">Fees and Payment</a></li>
-        <li><a href="#">Terms and Conditions</a></li>
-      </ul>
-    </div>
-
-    <!-- Newsletter -->
-    <div class="footer-column">
-      <h3>Newsletter</h3>
-      <div class="newsletter">
-        <input type="email" placeholder="Your email">
-        <button>→</button>
-      </div>
-    </div>
-
-    <!-- Store Locator -->
-    <div class="footer-column">
-      <h3>Store Locator</h3>
-      <div class="newsletter">
-        <input type="text" placeholder="Enter location">
-        <button>→</button>
-      </div>
-    </div>
-  </div>
-
-  <!-- Bottom Section -->
-  <div class="footer-column">
-    <select>
-      <option>INR India</option>
-      <option>USD United States</option>
-      <option>EUR Europe</option>
-    </select>
-
-    <div class="social-icons">
-      <a href="#"><i class="fab fa-facebook"></i></a>
-      <a href="#"><i class="fab fa-instagram"></i></a>
-      <a href="#"><i class="fab fa-youtube"></i></a>
-      <a href="#"><i class="fab fa-twitter"></i></a>
-      <a href="#"><i class="fab fa-pinterest"></i></a>
-    </div>
-  </div>
-
-  <p class="copyright">© Your Brand. All Rights Reserved.</p>
-</footer>
-
-  </div>
-</footer>
-<script>
-// future JS code here
-</script>
-</body>
-</html>
-
-
-    <div class="footer-column">
-      <h3>Need Help</h3>
-      <ul>
-        <li><a href="#">Contact Us</a></li>
-        <li><a href="#">Book an Appointment</a></li>
-        <li><a href="#">Shipping</a></li>
-        <li><a href="#">FAQ's</a></li>
-        <li><a href="#">Stockist</a></li>
-      </ul>
-    </div>
-
-    <div class="footer-column">
-      <h3>Legal</h3>
-      <ul>
-        <li><a href="#">Privacy & Cookies</a></li>
-        <li><a href="#">Fees and Payment</a></li>
-        <li><a href="#">Terms and Conditions</a></li>
-      </ul>
-    </div>
-
-    <div class="footer-column">
-      <h3>Newsletter</h3>
-      <div class="newsletter">
-        <input type="email" placeholder="Your email">
-        <button>→</button>
-      </div>
-    </div>
-
-    <div class="footer-column">
-      <h3>Store Locator</h3>
-      <div class="newsletter">
-        <input type="text" placeholder="Enter location">
-        <button>→</button>
-      </div>
-    </div>
-  </div>
-
-  <!-- Bottom Section -->
-  <div class="footer-bottom">
-    <select>
-      <option>INR India</option>
-      <option>USD United States</option>
-      <option>EUR Europe</option>
-    </select>
-
-    <div class="social-icons">
-      <a href="#"><i class="fab fa-facebook"></i></a>
-      <a href="#"><i class="fab fa-instagram"></i></a>
-      <a href="#"><i class="fab fa-youtube"></i></a>
-      <a href="#"><i class="fab fa-twitter"></i></a>
-      <a href="#"><i class="fab fa-pinterest"></i></a>
-    </div>
-  </div>
-
-  <p class="copyright">© Your Brand. All Rights Reserved.</p>
-</footer>
-
-<!-- Font Awesome for icons -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
-<script>
-  // Smooth scroll behavior
-  document.documentElement.style.scrollBehavior = 'smooth';
-
-  // Header shrink on scroll
-  const header = document.getElementById('siteHeader');
-  const shrinkThreshold = 12;
-
-  const onScroll = () => {
-    if (window.scrollY > shrinkThreshold) {
-      header.classList.add('is-shrunk');
-    } else {
-      header.classList.remove('is-shrunk');
-    }
-  };
-  
-  window.addEventListener('scroll', onScroll, { passive: true });
-  onScroll(); // Check initial state
-
-  // Ensure smooth scroll works for navigation links
-  document.querySelectorAll('.header-nav a[href^="#"]').forEach(link => {
-    link.addEventListener('click', (e) => {
-      const targetId = link.getAttribute('href');
-      const target = document.querySelector(targetId);
-      if (!target) return;
-      e.preventDefault();
-      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    // Ensure smooth scroll works for navigation links
+    document.querySelectorAll('.header-nav a[href^="#"]').forEach(link => {
+      link.addEventListener('click', (e) => {
+        const targetId = link.getAttribute('href');
+        const target = document.querySelector(targetId);
+        if (!target) return;
+        e.preventDefault();
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
     });
-  });
-</script>
-
+  </script>
 </body>
 </html>
